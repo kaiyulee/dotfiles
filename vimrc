@@ -252,7 +252,7 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 " local indent config
-autocmd FileType * LocalIndentGuide +hl
+autocmd FileType * LocalIndentGuide +hl +cc
 " highlight LocalIndentGuide ctermfg=5 ctermbg=0 cterm=inverse
 " goto symbol
 nmap <leader>T :GotoSymbol.
