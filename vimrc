@@ -16,7 +16,7 @@ Plugin 'wincent/command-t'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'wincent/terminus'
 Plugin 'vim-airline/vim-airline'
@@ -29,12 +29,14 @@ Plugin 'iamcco/markdown-preview.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'tweekmonster/local-indent.vim'
+" Plugin 'tweekmonster/local-indent.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
-Plugin 'luochen1990/rainbow'
+"Plugin 'luochen1990/rainbow'
 Plugin 'solarnz/thrift.vim'
 Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'junegunn/goyo.vim'
+Plugin 'amix/vim-zenroom2'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,7 +59,6 @@ syntax on
 
 colorscheme zenburn
 
-set clipboard=unnamed " Use OS clipboard for copypasta
 set number
 set hlsearch
 set autoindent
@@ -81,6 +82,7 @@ set showtabline=1 " Always display the tabline, even if there is only one tab"
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)"
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
+set mouse=a
 
 nnoremap <F2> :set nonumber!<CR>
 " remove highlight after searching
@@ -100,11 +102,11 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 " TagBar settings
 nmap <F8> :TagbarToggle<CR>
@@ -265,7 +267,7 @@ autocmd FileType * LocalIndentGuide +hl +cc
 nmap <leader>T :GotoSymbol.
 
 " 彩虹括号
-let g:rainbow_active = 1
+" 等待issue修复let g:rainbow_active = 1
 
 " macvim
 if has("gui_running")
@@ -280,3 +282,4 @@ if has("gui_running")
     colorscheme hybrid_material
     let g:airline_theme='hybridline'
 endif
+
