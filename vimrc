@@ -16,7 +16,7 @@ Plugin 'wincent/command-t'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'wincent/terminus'
 Plugin 'vim-airline/vim-airline'
@@ -29,12 +29,16 @@ Plugin 'iamcco/markdown-preview.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'tweekmonster/local-indent.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
-Plugin 'luochen1990/rainbow'
 Plugin 'solarnz/thrift.vim'
 Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'junegunn/goyo.vim'
+Plugin 'amix/vim-zenroom2'
+Plugin 'rakr/vim-one'
+Plugin 'reedes/vim-colors-pencil'
+Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+Plugin 'jwalton512/vim-blade'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,9 +59,9 @@ let mapleader=","
 
 syntax on
 
-colorscheme zenburn
-
-set clipboard=unnamed " Use OS clipboard for copypasta
+colorscheme onehalfdark "zenburn
+set t_Co=256
+set background=dark
 set number
 set hlsearch
 set autoindent
@@ -66,7 +70,7 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 set textwidth=160
-set shiftwidth=4
+set shiftwidth=4 et
 set so=3 " context lines 始终距离顶部或者底部3行的距离
 set smartcase
 set ignorecase
@@ -81,6 +85,7 @@ set showtabline=1 " Always display the tabline, even if there is only one tab"
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)"
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
+set mouse=a
 
 nnoremap <F2> :set nonumber!<CR>
 " remove highlight after searching
@@ -94,17 +99,6 @@ let NERDTreeShowHidden=1
 let NERDSpaceDelims=1
 let NERDTreeAutoCenter=1
 let NERDTreeAutoCenterThreshold=5
-
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 " TagBar settings
 nmap <F8> :TagbarToggle<CR>
@@ -131,7 +125,7 @@ let g:airline#extensions#tabline#left_alt_sep = '#'
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline_theme='distinguished'
+let g:airline_theme='onehalfdark'
 set fillchars+=stl:\ ,stlnc:\
 
 " CtrlP <http://vimawesome.com/plugin/ctrlp-vim-state-of-grace>
@@ -258,14 +252,14 @@ let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1 " 语法高亮
 
 " local indent config
-autocmd FileType * LocalIndentGuide +hl +cc
+" autocmd FileType * LocalIndentGuide +hl +cc
     " highlight LocalIndentGuide ctermfg=5 ctermbg=0 cterm=inverse
 
 " goto symbol
 nmap <leader>T :GotoSymbol.
 
 " 彩虹括号
-let g:rainbow_active = 1
+" 等待issue修复let g:rainbow_active = 1
 
 " macvim
 if has("gui_running")
@@ -277,6 +271,11 @@ if has("gui_running")
     set guioptions-=l " remove left-hand scroll bar
     set guioptions-=L " remove left-hand scroll bar even if there is a vertical split
     set guioptions-=b " remove bottom scroll bar
-    colorscheme hybrid_material
-    let g:airline_theme='hybridline'
+
+    colorscheme onehalflight "hybrid_material
+    let g:airline_theme='onehalflight'
+    let g:indent_guides_auto_clolors = 0
 endif
+
+" vim-indent-guides setting
+let g:indent_guides_start_level=2
