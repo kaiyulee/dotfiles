@@ -3,15 +3,11 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call vundle#begin()             " required
+Plugin 'VundleVim/Vundle.vim'   " required
 
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Keep Plugin commands between vundle#begin/end.
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Yggdroot/indentLine'
 Plugin 'wincent/command-t'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -27,20 +23,17 @@ Plugin 'leshill/vim-json'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'iamcco/markdown-preview.vim'
 Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'solarnz/thrift.vim'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'junegunn/goyo.vim'
-Plugin 'amix/vim-zenroom2'
 Plugin 'rakr/vim-one'
 Plugin 'reedes/vim-colors-pencil'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'jwalton512/vim-blade'
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -64,7 +57,7 @@ set t_Co=256
 set background=dark
 set number
 set hlsearch
-set autoindent
+set ai
 set smartindent
 set tabstop=4
 set softtabstop=4
@@ -125,7 +118,7 @@ let g:airline#extensions#tabline#left_alt_sep = '#'
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline_theme='papercolor'
+let g:airline_theme='lucius'
 
 let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%c")}'])
 set fillchars+=stl:\ ,stlnc:\
@@ -173,78 +166,6 @@ xmap al <Plug>(EashAlign)
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap al <Plug>(EasyAlign)
 
-" NeoComplete config
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
 " ctrlp-funky
 nnoremap <Leader>fu :CtrlPFunky<Cr>
     " narrow the list down with a word under cursor
@@ -252,10 +173,6 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 let g:ctrlp_funky_matchtype = 'path' 
 let g:ctrlp_funky_syntax_highlight = 1 " 语法高亮
-
-" local indent config
-" autocmd FileType * LocalIndentGuide +hl +cc
-    " highlight LocalIndentGuide ctermfg=5 ctermbg=0 cterm=inverse
 
 " goto symbol
 nmap <leader>T :GotoSymbol.
@@ -273,9 +190,14 @@ if has("gui_running")
 
     colorscheme hybrid_material
     set background=dark
-    let g:airline_theme='papercolor'
+    let g:airline_theme='hybridline'
     let g:indent_guides_auto_clolors = 0
+    let g:indentLine_color_gui = '#A4E57E'
 endif
 
 " vim-indent-guides setting
 let g:indent_guides_start_level=2
+
+" indentLine
+let g:indentLine_color_term = 239
+let g:indentLine_char = 'c'
