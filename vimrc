@@ -192,7 +192,8 @@ if has("gui_running")
     set background=dark
     let g:airline_theme='hybridline'
     let g:indent_guides_auto_clolors = 0
-    let g:indentLine_color_gui = '#A4E57E'
+    let g:indentLine_color_gui = '#4e4e4e'
+    let g:indentLine_char = '┆'
 endif
 
 " vim-indent-guides setting
@@ -200,4 +201,4 @@ let g:indent_guides_start_level=2
 
 " indentLine
 let g:indentLine_color_term = 239
-let g:indentLine_char = 'c'
+let g:indentLine_char = '┆'
