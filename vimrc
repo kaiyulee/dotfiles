@@ -59,7 +59,7 @@ let mapleader=","
 
 syntax on
 
-colorscheme onehalfdark "zenburn
+colorscheme zenburn
 set t_Co=256
 set background=dark
 set number
@@ -125,7 +125,9 @@ let g:airline#extensions#tabline#left_alt_sep = '#'
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline_theme='onehalfdark'
+let g:airline_theme='papercolor'
+
+let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%c")}'])
 set fillchars+=stl:\ ,stlnc:\
 
 " CtrlP <http://vimawesome.com/plugin/ctrlp-vim-state-of-grace>
@@ -258,9 +260,6 @@ let g:ctrlp_funky_syntax_highlight = 1 " 语法高亮
 " goto symbol
 nmap <leader>T :GotoSymbol.
 
-" 彩虹括号
-" 等待issue修复let g:rainbow_active = 1
-
 " macvim
 if has("gui_running")
     "set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
@@ -272,8 +271,9 @@ if has("gui_running")
     set guioptions-=L " remove left-hand scroll bar even if there is a vertical split
     set guioptions-=b " remove bottom scroll bar
 
-    colorscheme onehalflight "hybrid_material
-    let g:airline_theme='onehalflight'
+    colorscheme hybrid_material
+    set background=dark
+    let g:airline_theme='papercolor'
     let g:indent_guides_auto_clolors = 0
 endif
 
