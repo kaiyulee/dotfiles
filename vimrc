@@ -6,15 +6,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()             " required
 Plugin 'VundleVim/Vundle.vim'   " required
 
+Plugin 'mhinz/vim-startify'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
-Plugin 'wincent/command-t'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'wincent/terminus'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
@@ -25,14 +29,13 @@ Plugin 'iamcco/markdown-preview.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'solarnz/thrift.vim'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'junegunn/goyo.vim'
-Plugin 'rakr/vim-one'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'jwalton512/vim-blade'
+Plugin 'chrisgillis/vim-bootstrap3-snippets'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -56,6 +59,7 @@ colorscheme zenburn
 set t_Co=256
 set background=dark
 set number
+set relativenumber
 set hlsearch
 set ai
 set smartindent
@@ -64,7 +68,7 @@ set softtabstop=4
 set expandtab
 set textwidth=160
 set shiftwidth=4 et
-set so=3 " context lines 始终距离顶部或者底部3行的距离
+set so=10 " context lines 始终距离顶部或者底部3行的距离
 set smartcase
 set ignorecase
 set ruler
@@ -73,20 +77,29 @@ set pastetoggle=<F9>
 set cursorline "cursorcolumn 
 set wrap "auto break line,[nowrap for the other side]
 set laststatus=2 " Always show the status line
-set encoding=utf-8
+set encoding=utf8
 set showtabline=1 " Always display the tabline, even if there is only one tab"
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)"
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
 set mouse=a
+set fillchars+=vert:\ ,stl:\ ,stlnc:\ 
 
 nnoremap <F2> :set nonumber!<CR>
 " remove highlight after searching
 nnoremap <silent> <esc> :noh<cr><esc>
 
+"" Tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
+
+"" Close buffer
+noremap <leader>c :bd<CR>
+
 " NERDTree settings
-map <F7> :NERDTreeToggle<CR>
-imap <F7> <ESC>:NERDTreeToggle<CR>
+" map <F7> :NERDTreeToggle<CR>
+" imap <F7> <ESC>:NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 let NERDSpaceDelims=1
@@ -118,26 +131,32 @@ let g:airline#extensions#tabline#left_alt_sep = '#'
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#csv#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#ycm#enabled = 0
 let g:airline_theme='lucius'
 
-let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%c")}'])
-set fillchars+=stl:\ ,stlnc:\
+let g:airline_section_b = airline#section#create_left(['branch'])
+let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'])
 
 " CtrlP <http://vimawesome.com/plugin/ctrlp-vim-state-of-grace>
+set wildmode=list:longest,list:full
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.tags,*/.idea/*,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__     " MacOSX/Linux
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
     " Exclude files and directories
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.tags,*/.idea/*     " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|idea)$',
+    \ 'dir':  '\v[\/]\.(git|hg|svn|idea|node_modules|target|dist)$',
     \ 'file': '\v\.(exe|so|dll)$',
     \ 'link': 'some_bad_symbolic_links',
     \ }
+let g:ctrlp_use_caching = 1
 
 " CommandT
     " 设置 CommandT 搜索的路径为当前目录 , 可选 `file`, `dir`, `pwd`
-let g:CommandTTraverseSCM = 'pwd'
+" let g:CommandTTraverseSCM = 'pwd'
 
 " markdown preview
 let g:mkdp_path_to_chrome = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
@@ -179,9 +198,7 @@ nmap <leader>T :GotoSymbol.
 
 " macvim
 if has("gui_running")
-    "set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
-    " set guifont=Monaco\ for\ powerline:h12
-    set guifont=Roboto\ Mono\ Thin\ for\ powerline:h12
+    set guifont=Monaco\ for\ powerline:h13
     set guioptions-=T " remove toolbar
     set guioptions-=r " remove right-hand scroll bar
     set guioptions-=l " remove left-hand scroll bar
@@ -194,6 +211,7 @@ if has("gui_running")
     let g:indent_guides_auto_clolors = 0
     let g:indentLine_color_gui = '#4e4e4e'
     let g:indentLine_char = '┆'
+    let g:webdevicons_enable = 0
 endif
 
 " vim-indent-guides setting
@@ -202,3 +220,6 @@ let g:indent_guides_start_level=2
 " indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_char = '┆'
+
+map <Leader>t <plug>NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_console_startup=1
