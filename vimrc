@@ -68,7 +68,7 @@ set softtabstop=4
 set expandtab
 set textwidth=160
 set shiftwidth=4 et
-set so=10 " context lines 始终距离顶部或者底部3行的距离
+" set so=10 " context lines 始终距离顶部或者底部3行的距离
 set smartcase
 set ignorecase
 set ruler
