@@ -222,4 +222,4 @@ let g:indentLine_color_term = 239
 let g:indentLine_char = '┆'
 
 map <Leader>t <plug>NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_console_startup=0
