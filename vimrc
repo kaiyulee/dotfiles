@@ -12,7 +12,6 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'wincent/terminus'
@@ -21,7 +20,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'tyrannicaltoucan/vim-quantum'
+Plugin 'lifepillar/vim-wwdc16-theme'
+Plugin 'lifepillar/vim-solarized8'
 Plugin 'travisjeffery/vim-gotosymbol'
 Plugin 'leshill/vim-json'
 Plugin 'terryma/vim-multiple-cursors'
@@ -30,11 +31,7 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'solarnz/thrift.vim'
-Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'junegunn/goyo.vim'
 Plugin 'jwalton512/vim-blade'
-Plugin 'chrisgillis/vim-bootstrap3-snippets'
 Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()            " required
@@ -55,11 +52,10 @@ let mapleader=","
 
 syntax on
 
-colorscheme zenburn
-set t_Co=256
 set background=dark
+set t_Co=256
 set number
-set relativenumber
+" set relativenumber
 set hlsearch
 set ai
 set smartindent
@@ -77,13 +73,20 @@ set pastetoggle=<F9>
 set cursorline "cursorcolumn 
 set wrap "auto break line,[nowrap for the other side]
 set laststatus=2 " Always show the status line
-set encoding=utf8
+set encoding=utf-8
+set termencoding=utf-8
 set showtabline=1 " Always display the tabline, even if there is only one tab"
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)"
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
 set mouse=a
 set fillchars+=vert:\ ,stl:\ ,stlnc:\ 
+set ambiwidth=single "single
+
+" For wwdc16 colorscheme
+" let g:wwdc16_term_italics = 1
+" let g:wwdc16_term_trans_bg = 1
+colorscheme quantum " wwdc16
 
 nnoremap <F2> :set nonumber!<CR>
 " remove highlight after searching
@@ -98,17 +101,19 @@ nnoremap <silent> <S-t> :tabnew<CR>
 noremap <leader>c :bd<CR>
 
 " NERDTree settings
-" map <F7> :NERDTreeToggle<CR>
-" imap <F7> <ESC>:NERDTreeToggle<CR>
+map <F7> :NERDTreeToggle<CR>
+imap <F7> <ESC>:NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 let NERDSpaceDelims=1
 let NERDTreeAutoCenter=1
 let NERDTreeAutoCenterThreshold=5
+let g:NERDTreeDirArrowExpandable = '○'
+let g:NERDTreeDirArrowCollapsible = '●'
 
 " TagBar settings
 nmap <F8> :TagbarToggle<CR>
-
+let g:tagbar_vertical = 30
 let g:tagbar_autoclose=1
 let g:tagbar_width = 30
 let g:tagbar_autofocus = 1
@@ -124,19 +129,28 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
+" if !exists('g:airline_symbols')
+  " let g:airline_symbols = {}
+" endif
+" let g:airline_symbols.space = "\ua0"
+
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '#'
+let g:airline#extensions#tabline#left_alt_sep = '⎹⎸'
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#csv#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#ycm#enabled = 0
-let g:airline_theme='lucius'
-
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#checks = ['trailing']
+let g:airline#extensions#ycm#enabled = 1
+let g:airline_theme='quantum'
+let g:airline_skip_empty_sections = 1
 let g:airline_section_b = airline#section#create_left(['branch'])
 let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'])
 
@@ -144,7 +158,7 @@ let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'
 set wildmode=list:longest,list:full
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.tags,*/.idea/*,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__     " MacOSX/Linux
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_working_path_mode = 'ra'
     " Exclude files and directories
 let g:ctrlp_custom_ignore = {
@@ -153,10 +167,6 @@ let g:ctrlp_custom_ignore = {
     \ 'link': 'some_bad_symbolic_links',
     \ }
 let g:ctrlp_use_caching = 1
-
-" CommandT
-    " 设置 CommandT 搜索的路径为当前目录 , 可选 `file`, `dir`, `pwd`
-" let g:CommandTTraverseSCM = 'pwd'
 
 " markdown preview
 let g:mkdp_path_to_chrome = "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
@@ -196,22 +206,27 @@ let g:ctrlp_funky_syntax_highlight = 1 " 语法高亮
 " goto symbol
 nmap <leader>T :GotoSymbol.
 
+if has("termguicolors")
+    " set termguicolors
+endif
+
 " macvim
 if has("gui_running")
-    set guifont=Monaco\ for\ powerline:h13
+    set guifont=DroidSansMonoForPowerline\ Nerd\ Font:h14
     set guioptions-=T " remove toolbar
     set guioptions-=r " remove right-hand scroll bar
     set guioptions-=l " remove left-hand scroll bar
     set guioptions-=L " remove left-hand scroll bar even if there is a vertical split
     set guioptions-=b " remove bottom scroll bar
 
-    colorscheme hybrid_material
     set background=dark
-    let g:airline_theme='hybridline'
+    colorscheme quantum
+    let g:airline_theme='quantum'
     let g:indent_guides_auto_clolors = 0
     let g:indentLine_color_gui = '#4e4e4e'
-    let g:indentLine_char = '┆'
-    let g:webdevicons_enable = 0
+    let g:indentLine_char = '┊'
+    let g:webdevicons_enable = 1
+    let g:nerdtree_tabs_open_on_gui_startup=0
 endif
 
 " vim-indent-guides setting
@@ -219,7 +234,12 @@ let g:indent_guides_start_level=2
 
 " indentLine
 let g:indentLine_color_term = 239
-let g:indentLine_char = '┆'
+let g:indentLine_char = '┊'
+" let g:indentLine_leadingSpaceChar = '˽'
+" let g:indentLine_leadingSpaceEnabled = 1
 
-map <Leader>t <plug>NERDTreeTabsToggle<CR>
+map <Leader>nt :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup=0
+autocmd FileType nerdtree setlocal nolist
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
