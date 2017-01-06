@@ -7,7 +7,7 @@ call vundle#begin()             " required
 Plugin 'VundleVim/Vundle.vim'   " required
 
 Plugin 'mhinz/vim-startify'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -70,7 +70,7 @@ set ignorecase
 set ruler
 set title
 set pastetoggle=<F9>
-set cursorline "cursorcolumn 
+set cursorline "cursorcolumn
 set wrap "auto break line,[nowrap for the other side]
 set laststatus=2 " Always show the status line
 set encoding=utf-8
@@ -80,7 +80,7 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
 set mouse=a
-set fillchars+=vert:\ ,stl:\ ,stlnc:\ 
+set fillchars+=vert:\ ,stl:\ ,stlnc:\
 set ambiwidth=single "single
 
 " For wwdc16 colorscheme
@@ -200,7 +200,7 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
     " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
-let g:ctrlp_funky_matchtype = 'path' 
+let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1 " 语法高亮
 
 " goto symbol
@@ -212,6 +212,13 @@ endif
 
 " macvim
 if has("gui_running")
+    " 兼容windowsgvim，修复菜单、右键菜单、控制台信息乱码问题
+    source $VIMRUNTIME\delmenu.vim
+    language messages zh_CN.UTF-8
+    " 关闭提示音
+    set visualbell t_vb=    "关闭visual bell
+    au GuiEnter * set t_vb= "关闭beep
+
     set guifont=DroidSansMonoForPowerline\ Nerd\ Font:h14
     set guioptions-=T " remove toolbar
     set guioptions-=r " remove right-hand scroll bar
@@ -242,4 +249,3 @@ map <Leader>nt :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup=0
 autocmd FileType nerdtree setlocal nolist
 let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
-
