@@ -21,6 +21,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tyrannicaltoucan/vim-quantum'
+Plugin 'rakr/vim-one'
 Plugin 'lifepillar/vim-wwdc16-theme'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'travisjeffery/vim-gotosymbol'
@@ -81,12 +82,14 @@ set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
 set mouse=a
 set fillchars+=vert:\ ,stl:\ ,stlnc:\ 
+set list
+set listchars=eol:¬,tab:>\ ,space:\ 
 set ambiwidth=single "single
 
 " For wwdc16 colorscheme
 " let g:wwdc16_term_italics = 1
 " let g:wwdc16_term_trans_bg = 1
-colorscheme quantum " wwdc16
+colorscheme one "quantum  wwdc16
 
 nnoremap <F2> :set nonumber!<CR>
 " remove highlight after searching
@@ -149,7 +152,7 @@ let g:airline#extensions#csv#enabled = 0
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#checks = ['trailing']
 let g:airline#extensions#ycm#enabled = 1
-let g:airline_theme='quantum'
+let g:airline_theme='one' "quantum
 let g:airline_skip_empty_sections = 1
 let g:airline_section_b = airline#section#create_left(['branch'])
 let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'])
@@ -158,7 +161,7 @@ let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'
 set wildmode=list:longest,list:full
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.tags,*/.idea/*,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__     " MacOSX/Linux
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
     " Exclude files and directories
 let g:ctrlp_custom_ignore = {
@@ -207,7 +210,7 @@ let g:ctrlp_funky_syntax_highlight = 1 " 语法高亮
 nmap <leader>T :GotoSymbol.
 
 if has("termguicolors")
-    " set termguicolors
+    set termguicolors
 endif
 
 " macvim
@@ -236,6 +239,7 @@ let g:indent_guides_start_level=2
 let g:indentLine_color_term = 239
 let g:indentLine_char = '┊'
 " let g:indentLine_leadingSpaceChar = '˽'
+" let g:indentLine_leadingSpaceChar = '·'
 " let g:indentLine_leadingSpaceEnabled = 1
 
 map <Leader>nt :NERDTreeToggle<CR>
