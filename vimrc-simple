@@ -1,0 +1,161 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()             " required
+Plugin 'VundleVim/Vundle.vim'   " required
+
+Plugin 'mhinz/vim-startify'
+Plugin 'Yggdroot/indentLine'
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'travisjeffery/vim-gotosymbol'
+Plugin 'leshill/vim-json'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'jwalton512/vim-blade'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+let mapleader=","
+
+syntax on
+
+set background=dark
+set t_Co=256
+set number
+" set relativenumber
+set hlsearch
+set ai
+set smartindent
+set tabstop=4
+set softtabstop=4
+set expandtab
+set textwidth=160
+set shiftwidth=4 et
+set encoding=utf-8
+" set so=10 " context lines 始终距离顶部或者底部3行的距离
+set smartcase
+set ignorecase
+set ruler
+set title
+set pastetoggle=<F9>
+set cursorline "cursorcolumn
+set wrap "auto break line,[nowrap for the other side]
+set laststatus=2 " Always show the status line
+set encoding=utf-8
+set termencoding=utf-8
+set showtabline=1 " Always display the tabline, even if there is only one tab"
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)"
+set backspace=2 "支持delete键
+set ffs=unix "Default to Unix LF line endings"
+set mouse=a
+"set list
+"set listchars=eol:,tab:\ ,space:\ 
+set fillchars+=vert:\ ,stl:\ ,stlnc:\ 
+"set showbreak=↪\
+set ambiwidth=double "single
+
+colorscheme desert
+
+hi CursorLineNr   term=bold ctermfg=White ctermbg=Black gui=bold guifg=Green
+
+nnoremap <F2> :set nonumber!<CR>
+" remove highlight after searching
+nnoremap <silent> <esc> :noh<cr><esc>
+
+"" Tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
+
+"" Close buffer
+noremap <leader>c :bd<CR>
+
+" NERDTree settings
+map <F7> :NERDTreeToggle<CR>
+imap <F7> <ESC>:NERDTreeToggle<CR>
+
+let NERDTreeShowHidden=1
+let NERDSpaceDelims=1
+let NERDTreeAutoCenter=1
+let NERDTreeAutoCenterThreshold=5
+let g:NERDTreeDirArrowExpandable = '○'
+let g:NERDTreeDirArrowCollapsible = '●'
+
+" TagBar settings
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_vertical = 30
+let g:tagbar_autoclose=1
+let g:tagbar_width = 30
+let g:tagbar_autofocus = 1
+
+" CtrlP <http://vimawesome.com/plugin/ctrlp-vim-state-of-grace>
+set wildmode=list:longest,list:full
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.tags,*/.idea/*,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__     " MacOSX/Linux
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+    " Exclude files and directories
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|idea|node_modules|target|dist)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+let g:ctrlp_use_caching = 1
+
+" vim-easy-align
+    " Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap al <Plug>(EashAlign)
+    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap al <Plug>(EasyAlign)
+
+" ctrlp-funky
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+    " narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1 " 语法高亮
+
+" goto symbol
+nmap <leader>T :GotoSymbol.
+
+if has("termguicolors")
+    set termguicolors
+endif
+
+" indentLine
+let g:indentLine_color_term = 239
+" let g:indentLine_char = '┊'
+" let g:indentLine_leadingSpaceChar = '˽'
+" let g:indentLine_leadingSpaceChar = '·'
+" let g:indentLine_leadingSpaceEnabled = 1
+
+map <Leader>nt :NERDTreeToggle<CR>
+let g:nerdtree_tabs_open_on_console_startup=0
+autocmd FileType nerdtree setlocal nolist
+
