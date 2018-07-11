@@ -14,7 +14,6 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
-Plugin 'wincent/terminus'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
@@ -81,9 +80,6 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
 set mouse=a
-set fillchars+=vert:\ ,stl:\ ,stlnc:\ 
-set list
-set listchars=eol:¬,tab:>\ ,space:\ 
 set ambiwidth=single "single
 
 " For wwdc16 colorscheme
