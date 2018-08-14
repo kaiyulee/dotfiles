@@ -6,8 +6,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()             " required
 Plugin 'VundleVim/Vundle.vim'   " required
 
-Plugin 'mhinz/vim-startify'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -19,12 +19,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tyrannicaltoucan/vim-quantum'
-Plugin 'rakr/vim-one'
-Plugin 'lifepillar/vim-wwdc16-theme'
-Plugin 'lifepillar/vim-solarized8'
 Plugin 'travisjeffery/vim-gotosymbol'
-Plugin 'leshill/vim-json'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'iamcco/markdown-preview.vim'
 Plugin 'tacahiroy/ctrlp-funky'
@@ -32,7 +27,15 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jwalton512/vim-blade'
-Plugin 'ryanoasis/vim-devicons'
+" Plugin 'ryanoasis/vim-devicons'
+Plugin 'pangloss/vim-javascript'
+Plugin 'elzr/vim-json'
+Plugin 'fatih/vim-go'
+Plugin 'posva/vim-vue'
+Plugin 'chr4/nginx.vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+Plugin 'pboettch/vim-cmake-syntax'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,7 +55,6 @@ let mapleader=","
 
 syntax on
 
-set background=dark
 set t_Co=256
 set number
 " set relativenumber
@@ -64,7 +66,7 @@ set softtabstop=4
 set expandtab
 set textwidth=160
 set shiftwidth=4 et
-" set so=10 " context lines 始终距离顶部或者底部3行的距离
+set so=3 " context lines 始终距离顶部或者底部3行的距离
 set smartcase
 set ignorecase
 set ruler
@@ -76,16 +78,25 @@ set laststatus=2 " Always show the status line
 set encoding=utf-8
 set termencoding=utf-8
 set showtabline=1 " Always display the tabline, even if there is only one tab"
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)"
+" Hide the default mode text (e.g. -- INSERT -- below the statusline)"
+" set noshowmode
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
-set mouse=a
 set ambiwidth=single "single
+set background=light
+colorscheme PaperColor
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
 
-" For wwdc16 colorscheme
-" let g:wwdc16_term_italics = 1
-" let g:wwdc16_term_trans_bg = 1
-colorscheme one "quantum  wwdc16
+set colorcolumn=120                     " visual indicator at column 120
+set linespace=5                         " give the code some breathing room
+set list listchars=tab:\ \ ,trail:∙       " Use "██" for tabs and "∙" for trailing spaces
+set fillchars+=vert:                    " set vertical fillchar to "en space" (it's there, trust me) for tab splits
 
 nnoremap <F2> :set nonumber!<CR>
 " remove highlight after searching
@@ -102,6 +113,8 @@ noremap <leader>c :bd<CR>
 " NERDTree settings
 map <F7> :NERDTreeToggle<CR>
 imap <F7> <ESC>:NERDTreeToggle<CR>
+
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 let NERDTreeShowHidden=1
 let NERDSpaceDelims=1
@@ -128,11 +141,6 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
-" if !exists('g:airline_symbols')
-  " let g:airline_symbols = {}
-" endif
-" let g:airline_symbols.space = "\ua0"
-
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -147,10 +155,10 @@ let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#csv#enabled = 0
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#checks = ['trailing']
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ycm#enabled = 1
-let g:airline_theme='one' "quantum
-let g:airline_skip_empty_sections = 1
-let g:airline_section_b = airline#section#create_left(['branch'])
+let g:airline_theme='papercolor'
+let g:airline_skip_empty_sections = 0
 let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'])
 
 " CtrlP <http://vimawesome.com/plugin/ctrlp-vim-state-of-grace>
@@ -209,30 +217,9 @@ if has("termguicolors")
     set termguicolors
 endif
 
-" macvim
 if has("gui_running")
-    " 兼容windowsgvim，修复菜单、右键菜单、控制台信息乱码问题
-    source $VIMRUNTIME\delmenu.vim
-    language messages zh_CN.UTF-8
-    " 关闭提示音
-    set visualbell t_vb=    "关闭visual bell
-    au GuiEnter * set t_vb= "关闭beep
-
-    set guifont=DroidSansMonoForPowerline\ Nerd\ Font:h14
-    set guioptions-=T " remove toolbar
-    set guioptions-=r " remove right-hand scroll bar
-    set guioptions-=l " remove left-hand scroll bar
-    set guioptions-=L " remove left-hand scroll bar even if there is a vertical split
-    set guioptions-=b " remove bottom scroll bar
-
-    set background=dark
-    colorscheme quantum
-    let g:airline_theme='quantum'
-    let g:indent_guides_auto_clolors = 0
-    let g:indentLine_color_gui = '#4e4e4e'
-    let g:indentLine_char = '┊'
-    let g:webdevicons_enable = 1
-    let g:nerdtree_tabs_open_on_gui_startup=0
+    set guifont=DejaVu\ Sans\ Mono\ Nerd\ Font\ Complete\ Mono:h14
+    set linespace=2
 endif
 
 " vim-indent-guides setting
