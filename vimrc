@@ -3,6 +3,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()             " required
 Plugin 'VundleVim/Vundle.vim'   " required
 
@@ -26,6 +27,7 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf'
 Plugin 'jwalton512/vim-blade'
 " Plugin 'ryanoasis/vim-devicons'
 Plugin 'pangloss/vim-javascript'
@@ -83,7 +85,7 @@ set showtabline=1 " Always display the tabline, even if there is only one tab"
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
 set ambiwidth=single "single
-set background=light
+set background=dark
 colorscheme PaperColor
 let g:PaperColor_Theme_Options = {
   \   'theme': {
@@ -111,8 +113,7 @@ nnoremap <silent> <S-t> :tabnew<CR>
 noremap <leader>c :bd<CR>
 
 " NERDTree settings
-map <F7> :NERDTreeToggle<CR>
-imap <F7> <ESC>:NERDTreeToggle<CR>
+nmap <leader>ne :NERDTreeToggle<cr>
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 
@@ -236,3 +237,11 @@ map <Leader>nt :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup=0
 autocmd FileType nerdtree setlocal nolist
 let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
+set mouse=nicr
+
+" disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
