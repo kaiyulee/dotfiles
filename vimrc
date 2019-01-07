@@ -11,6 +11,7 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/emmet-vim'
+Plugin 'ternjs/tern_for_vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -60,6 +61,7 @@ syntax on
 set t_Co=256
 set number
 " set relativenumber
+set mouse=v
 set hlsearch
 set ai
 set smartindent
@@ -238,10 +240,4 @@ let g:nerdtree_tabs_open_on_console_startup=0
 autocmd FileType nerdtree setlocal nolist
 let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
-set mouse=nicr
 
-" disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
