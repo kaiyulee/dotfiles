@@ -8,6 +8,8 @@ call vundle#begin()             " required
 Plugin 'VundleVim/Vundle.vim'   " required
 
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'morhetz/gruvbox'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/emmet-vim'
@@ -30,11 +32,12 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/fzf'
 Plugin 'jwalton512/vim-blade'
-" Plugin 'ryanoasis/vim-devicons'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'pangloss/vim-javascript'
-Plugin 'elzr/vim-json'
 Plugin 'fatih/vim-go'
+Plugin 'StanAngeloff/php.vim'
 Plugin 'posva/vim-vue'
+Plugin 'elzr/vim-json'
 Plugin 'chr4/nginx.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
@@ -81,21 +84,25 @@ set wrap "auto break line,[nowrap for the other side]
 set laststatus=2 " Always show the status line
 set encoding=utf-8
 set termencoding=utf-8
-set showtabline=1 " Always display the tabline, even if there is only one tab"
+set showtabline=0 " Always display the tabline, even if there is only one tab"
 " Hide the default mode text (e.g. -- INSERT -- below the statusline)"
 " set noshowmode
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
 set ambiwidth=single "single
 set background=dark
-colorscheme PaperColor
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
+colorscheme gruvbox "PaperColor
+" let g:PaperColor_Theme_Options = {
+  " \   'theme': {
+  " \     'default': {
+  " \       'transparent_background': 1
+  " \     }
+  " \   }
+  " \ }
+  "
+  "
+" colorscheme setting current gruvbox
+let g:gruvbox_number_column='bg1'
 
 set colorcolumn=120                     " visual indicator at column 120
 set linespace=5                         " give the code some breathing room
@@ -120,11 +127,14 @@ nmap <leader>ne :NERDTreeToggle<cr>
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['[\.code|\.idea|\.git]$[[dir]]']
 let NERDSpaceDelims=1
 let NERDTreeAutoCenter=1
 let NERDTreeAutoCenterThreshold=5
-let g:NERDTreeDirArrowExpandable = '○'
-let g:NERDTreeDirArrowCollapsible = '●'
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 " TagBar settings
 nmap <F8> :TagbarToggle<CR>
@@ -144,12 +154,13 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
+let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '⎹⎸'
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '⎹⎸'
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -160,9 +171,9 @@ let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#checks = ['trailing']
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ycm#enabled = 1
-let g:airline_theme='papercolor'
+let g:airline_theme='gruvbox'
 let g:airline_skip_empty_sections = 0
-let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'])
+" let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'])
 
 " CtrlP <http://vimawesome.com/plugin/ctrlp-vim-state-of-grace>
 set wildmode=list:longest,list:full
