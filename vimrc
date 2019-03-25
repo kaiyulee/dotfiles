@@ -92,6 +92,7 @@ set ffs=unix "Default to Unix LF line endings"
 set ambiwidth=single "single
 set background=dark
 colorscheme gruvbox "PaperColor
+hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg "隐藏~"
 " let g:PaperColor_Theme_Options = {
   " \   'theme': {
   " \     'default': {
@@ -122,15 +123,15 @@ nnoremap <silent> <S-t> :tabnew<CR>
 noremap <leader>c :bd<CR>
 
 " NERDTree settings
-nmap <leader>ne :NERDTreeToggle<cr>
-
-let g:ycm_autoclose_preview_window_after_completion = 1
-
+map <Leader>nt :NERDTreeToggle<CR>
+autocmd FileType nerdtree setlocal nolist
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['[\.code|\.idea|\.git]$[[dir]]']
+let NERDTreeIgnore=['\.vscode$[[dir]]', '\.git$[[dir]]', '\.idea$[[dir]]', '\.swp$[[file]]', 'node_modules$[[dir]]']
 let NERDSpaceDelims=1
 let NERDTreeAutoCenter=1
 let NERDTreeAutoCenterThreshold=5
+let g:nerdtree_tabs_open_on_console_startup=0
+let g:ycm_autoclose_preview_window_after_completion = 1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
@@ -153,18 +154,23 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
 
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_count = 1
 " let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '⎹⎸'
+let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
+let g:airline#extensions#tabline#buf_label_first = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#csv#enabled = 0
 let g:airline#extensions#whitespace#enabled = 1
@@ -242,13 +248,13 @@ let g:indent_guides_start_level=2
 " indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_char = '┊'
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_fileType = ['php', 'go', 'js', 'html', 'vue', 'json']
+let g:vim_json_syntax_conceal = 0
 " let g:indentLine_leadingSpaceChar = '˽'
-" let g:indentLine_leadingSpaceChar = '·'
-" let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_leadingSpaceEnabled = 1
 
-map <Leader>nt :NERDTreeToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup=0
-autocmd FileType nerdtree setlocal nolist
-let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 
