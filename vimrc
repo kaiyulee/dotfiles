@@ -7,6 +7,7 @@ set rtp+=/usr/local/opt/fzf
 call vundle#begin()             " required
 Plugin 'VundleVim/Vundle.vim'   " required
 
+Plugin 'wakatime/vim-wakatime'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'morhetz/gruvbox'
@@ -16,14 +17,12 @@ Plugin 'mattn/emmet-vim'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'travisjeffery/vim-gotosymbol'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'iamcco/markdown-preview.vim'
 Plugin 'tacahiroy/ctrlp-funky'
@@ -114,7 +113,15 @@ nnoremap <F2> :set nonumber!<CR>
 " remove highlight after searching
 nnoremap <silent> <esc> :noh<cr><esc>
 
-"" Tabs
+" YouCompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+"在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+"在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+
+" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
@@ -124,12 +131,16 @@ noremap <leader>c :bd<CR>
 
 " NERDTree settings
 map <Leader>nt :NERDTreeToggle<CR>
+map <Leader>nf :NERDTreeFocus<CR>
 autocmd FileType nerdtree setlocal nolist
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.vscode$[[dir]]', '\.git$[[dir]]', '\.idea$[[dir]]', '\.swp$[[file]]', 'node_modules$[[dir]]']
 let NERDSpaceDelims=1
 let NERDTreeAutoCenter=1
 let NERDTreeAutoCenterThreshold=5
+let NERDTreeNaturalSort=1
+let NERDTreeStatusline='-1'
+let NERDTreeAutoDeleteBuffer=1
 let g:nerdtree_tabs_open_on_console_startup=0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:NERDTreeDirArrowExpandable = ''
