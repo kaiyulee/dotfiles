@@ -2,49 +2,46 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/plugged
 set rtp+=/usr/local/opt/fzf
-call vundle#begin()             " required
-Plugin 'VundleVim/Vundle.vim'   " required
-
-Plugin 'wakatime/vim-wakatime'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plugin 'morhetz/gruvbox'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-Plugin 'Yggdroot/indentLine'
-Plugin 'mattn/emmet-vim'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'iamcco/markdown-preview.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'junegunn/fzf'
-Plugin 'jwalton512/vim-blade'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'pangloss/vim-javascript'
-Plugin 'fatih/vim-go'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'posva/vim-vue'
-Plugin 'elzr/vim-json'
-Plugin 'chr4/nginx.vim'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
-Plugin 'pboettch/vim-cmake-syntax'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#begin('~/.vim/bundle')
+Plug 'junegunn/vim-plug'
+Plug 'wakatime/vim-wakatime'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Yggdroot/indentLine'
+Plug 'mattn/emmet-vim'
+Plug 'ternjs/tern_for_vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'junegunn/vim-easy-align'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf'
+Plug 'jwalton512/vim-blade'
+Plug 'ryanoasis/vim-devicons'
+Plug 'pangloss/vim-javascript'
+Plug 'fatih/vim-go'
+Plug 'StanAngeloff/php.vim'
+Plug 'posva/vim-vue'
+Plug 'elzr/vim-json'
+Plug 'chr4/nginx.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/goyo.vim'
+Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+Plug 'pboettch/vim-cmake-syntax'
+call plug#end()            " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -58,8 +55,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 let mapleader=","
-
-syntax on
 
 set t_Co=256
 set number
@@ -105,7 +100,7 @@ hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg "隐藏~"
 " colorscheme setting current gruvbox
 let g:gruvbox_number_column='bg1'
 
-set colorcolumn=120                     " visual indicator at column 120
+set colorcolumn=85                     " visual indicator at column 120
 set linespace=5                         " give the code some breathing room
 set list listchars=tab:\ \ ,trail:∙       " Use "██" for tabs and "∙" for trailing spaces
 set fillchars+=vert:                    " set vertical fillchar to "en space" (it's there, trust me) for tab splits
@@ -114,13 +109,6 @@ nnoremap <F2> :set nonumber!<CR>
 " remove highlight after searching
 nnoremap <silent> <esc> :noh<cr><esc>
 
-" YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-"在注释输入中也能补全
-let g:ycm_complete_in_comments = 1
-"在字符串输入中也能补全
-let g:ycm_complete_in_strings = 1
 
 " Tabs
 nnoremap <Tab> gt
@@ -231,7 +219,7 @@ let g:mkdp_refresh_slow = 0
 
 " vim-easy-align
     " Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap al <Plug>(EashAlign)
+xmap al <Plug>(EasyAlign)
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap al <Plug>(EasyAlign)
 
@@ -242,9 +230,6 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1 " 语法高亮
-
-" goto symbol
-nmap <leader>T :GotoSymbol.
 
 if has("termguicolors")
     set termguicolors
@@ -267,7 +252,11 @@ let g:vim_json_syntax_conceal = 0
 " let g:indentLine_leadingSpaceChar = '˽'
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_leadingSpaceEnabled = 1
-
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
+" coc.nvim
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
