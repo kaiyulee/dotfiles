@@ -41,6 +41,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 Plug 'pboettch/vim-cmake-syntax'
+Plug 'xwsoul/vim-zephir'
 call plug#end()            " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -189,7 +190,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
     " Exclude files and directories
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|idea|node_modules|target|dist)$',
+    \ 'dir':  '\.git\|hg\|svn\|\.idea\|node_modules\|target\|dist',
     \ 'file': '\v\.(exe|so|dll)$',
     \ 'link': 'some_bad_symbolic_links',
     \ }
