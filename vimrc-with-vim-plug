@@ -64,16 +64,10 @@ colorscheme gruvbox
 "
 source ~/.config/nvim/basic.vim
 
+" plugins settings
+
 hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg "隐藏~"
-" let g:PaperColor_Theme_Options = {
-  " \   'theme': {
-  " \     'default': {
-  " \       'transparent_background': 1
-  " \     }
-  " \   }
-  " \ }
-  "
-  "
+
 " colorscheme setting current gruvbox
 let g:gruvbox_number_column='bg1'
 let g:gruvbox_bold=1
