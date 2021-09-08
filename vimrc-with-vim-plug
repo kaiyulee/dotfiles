@@ -1,9 +1,13 @@
-" BASIC SETTINGS 
-"
-source "/Users/beke/.config/nvim/basic.vim"
+" 
+" ___      ___  ___  ___  _____  ___  ___      ___  __     ___      ___ 
+" |"  \    /"  ||"  \/"  |(\"   \|"  \|"  \    /"  ||" \   |"  \    /"  |
+"  \   \  //   | \   \  / |.\\   \    |\   \  //  / ||  |   \   \  //   |
+"  /\\  \/.    |  \\  \/  |: \.   \\  | \\  \/. ./  |:  |   /\\  \/.    |
+" |: \.        |  /   /   |.  \    \. |  \.    //   |.  |  |: \.        |
+" |.  \    /:  | /   /    |    \    \ |   \\   /    /\  |\ |.  \    /:  |
+" |___|\__/|___||___/      \___|\____\)    \__/    (__\_|_)|___|\__/|___|
+                                                                       
 
-
-" Plugins' SETTINGS
 "
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -56,7 +60,11 @@ call plug#end()            " required
 
 colorscheme gruvbox
 
-"hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg "隐藏~"
+" BASIC SETTINGS 
+"
+source ~/.config/nvim/basic.vim
+
+hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg "隐藏~"
 " let g:PaperColor_Theme_Options = {
   " \   'theme': {
   " \     'default': {
