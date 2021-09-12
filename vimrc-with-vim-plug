@@ -22,12 +22,14 @@ Plug 'Yggdroot/indentLine'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-" Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
+Plug 'liuchengxu/vim-which-key'
 Plug 'elzr/vim-json'
 Plug 'kevinoid/vim-jsonc'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
+Plug 'APZelos/blamer.nvim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
@@ -38,7 +40,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
 Plug 'junegunn/goyo.vim'
 Plug 'editorconfig/editorconfig-vim'
-"----------- colors
+"----------- colorscheme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -66,6 +68,19 @@ colorscheme gruvbox
 source ~/.config/nvim/basic.vim
 
 " plugins settings
+
+" vim-which-key
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+
+" blamer
+let g:blamer_enabled = 1
+let g:blamer_delay = 200
+let g:blamer_show_in_visual_modes = 0
+let g:blamer_prefix = ' ❱❱❱ '
+let g:blamer_relative_time = 1
+
+
 
 hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg "隐藏~"
 
@@ -95,18 +110,11 @@ let NERDTreeNaturalSort=1
 let NERDTreeAutoDeleteBuffer=1
 let g:nerdtree_tabs_open_on_console_startup=0
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeDirArrowExpandable = '✊'
+let g:NERDTreeDirArrowCollapsible = '🤲'
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
-
-" TagBar settings
-" nmap <F8> :TagbarToggle<CR>
-" let g:tagbar_vertical = 30
-" let g:tagbar_autoclose=1
-" let g:tagbar_width = 30
-" let g:tagbar_autofocus = 1
 
 " airline settings
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -167,6 +175,7 @@ let g:indentLine_leadingSpaceEnabled = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 " coc.nvim
+"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -217,6 +226,17 @@ else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
+" scroll in float window
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -243,6 +263,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+" Code refactor
+nmap <leader>rf <Plug>(coc-refactor)
+
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -306,7 +329,7 @@ nnoremap <silent> <space>p       :<C-u>CocFzfListResume<CR>
 
 " plugin incsearch 
 map /  <Plug>(incsearch-forward)
-" map ?  <Plug>(incsearch-backward)
+map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)

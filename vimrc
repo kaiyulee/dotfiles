@@ -11,7 +11,6 @@ Plugin 'wakatime/vim-wakatime'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'morhetz/gruvbox'
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/emmet-vim'

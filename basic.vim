@@ -3,7 +3,7 @@ let mapleader=","
 set t_Co=256
 set number
 set relativenumber
-set mouse=v
+set mouse=a
 set hlsearch
 set ai
 set smartindent
