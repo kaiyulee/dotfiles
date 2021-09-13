@@ -65,7 +65,9 @@ colorscheme gruvbox
 
 " BASIC SETTINGS 
 "
-source ~/.config/nvim/basic.vim
+source $HOME/.config/nvim/basic.vim
+
+source $HOME/.config/nvim/plugins/explorer.vim
 
 " plugins settings
 
