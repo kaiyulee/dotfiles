@@ -21,7 +21,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'mhinz/vim-startify'
 Plug 'liuchengxu/vim-which-key'
 Plug 'elzr/vim-json'
@@ -43,7 +43,7 @@ Plug 'editorconfig/editorconfig-vim'
 "----------- colorscheme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ryanoasis/vim-devicons'
@@ -67,9 +67,9 @@ colorscheme gruvbox
 "
 source $HOME/.config/nvim/basic.vim
 
-source $HOME/.config/nvim/plugins/explorer.vim
-
 " plugins settings
+"
+source $HOME/.config/nvim/plugins/explorer.vim
 
 " vim-which-key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -99,23 +99,23 @@ let g:gruvbox_italicize_comments=1
 lua require('nvim-treesitter.configs').setup {ensure_installed = "maintained", highlight = { enable = true,},}
 
 " NERDTree settings
-map <Leader>nt :NERDTreeToggle<CR>
-map <Leader>nf :NERDTreeFocus<CR>
-autocmd FileType nerdtree setlocal nolist
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.vscode$[[dir]]', '\.git$[[dir]]', '\.idea$[[dir]]', '\.swp$[[file]]', 'node_modules$[[dir]]']
-let NERDSpaceDelims=1
-let NERDTreeAutoCenter=1
-let NERDTreeAutoCenterThreshold=5
-let NERDTreeNaturalSort=1
+" map <Leader>nt :NERDTreeToggle<CR>
+" map <Leader>nf :NERDTreeFocus<CR>
+" autocmd FileType nerdtree setlocal nolist
+" let NERDTreeShowHidden=1
+" let NERDTreeIgnore=['\.vscode$[[dir]]', '\.git$[[dir]]', '\.idea$[[dir]]', '\.swp$[[file]]', 'node_modules$[[dir]]']
+" let NERDSpaceDelims=1
+" let NERDTreeAutoCenter=1
+" let NERDTreeAutoCenterThreshold=5
+" let NERDTreeNaturalSort=1
 " let NERDTreeStatusline=''
-let NERDTreeAutoDeleteBuffer=1
-let g:nerdtree_tabs_open_on_console_startup=0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:NERDTreeDirArrowExpandable = '✊'
-let g:NERDTreeDirArrowCollapsible = '🤲'
-let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
-let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+" let NERDTreeAutoDeleteBuffer=1
+" let g:nerdtree_tabs_open_on_console_startup=0
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:NERDTreeDirArrowExpandable = '✊'
+" let g:NERDTreeDirArrowCollapsible = '🤲'
+" let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+" let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 
 " airline settings
