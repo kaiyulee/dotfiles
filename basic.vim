@@ -29,7 +29,7 @@ set showtabline=0 " Always display the tabline, even if there is only one tab"
 set backspace=2 "支持delete键
 set ffs=unix "Default to Unix LF line endings"
 set ambiwidth=single "single
-set background=dak
+set background=dark
 
 " set colorcolumn=85                     " visual indicator at column 120
 set linespace=5                         " give the code some breathing room
