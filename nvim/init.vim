@@ -33,7 +33,7 @@ lua require('neoscroll').setup();
 
 " plugins settings
 "
-source $HOME/.config/nvim/plugins/explorer.vim
+source $HOME/.config/nvim/plugins/coc-explorer.vim
 
 " vim-which-key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>

@@ -1,1 +1,0 @@
-/Users/beke/Code/github-repos/dotfiles/plugins/coc-explorer.vim
