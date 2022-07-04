@@ -1,40 +1,49 @@
--- vim-plug
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.vim/plugged')
-Plug 'wakatime/vim-wakatime'
-Plug('neoclide/coc.nvim', {branch = 'release'})
-Plug('phpactor/phpactor', {['for'] = 'php', tag = '*', ['do'] = 'composer install --no-dev -o'})
-Plug 'Yggdroot/indentLine'
-Plug('prettier/vim-prettier', { ['do'] = 'yarn install' })
-Plug 'scrooloose/nerdcommenter'
-Plug 'mhinz/vim-startify'
-Plug 'karb94/neoscroll.nvim'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && yarn install' })
-Plug 'liuchengxu/vim-which-key'
-Plug 'elzr/vim-json'
-Plug 'kevinoid/vim-jsonc'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-Plug 'APZelos/blamer.nvim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/vim-easy-align'
-Plug 'haya14busa/incsearch.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'jiangmiao/auto-pairs'
-Plug('junegunn/fzf', { ['do'] = vim.fn['fzf#install']})
-Plug 'junegunn/fzf.vim'
-Plug 'antoinemadec/coc-fzf'
-Plug 'junegunn/goyo.vim'
-Plug 'editorconfig/editorconfig-vim'
--- colorscheme
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'morhetz/gruvbox'
-Plug 'lifepillar/vim-solarized8'
-Plug 'ryanoasis/vim-devicons'
-vim.call('plug#end')
+vim.cmd [[packadd packer.nvim]]
 
+return require('packer').startup(function() 
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
+    use 'wakatime/vim-wakatime'
+    use {'neoclide/coc.nvim', branch = 'release'}
+    use {'phpactor/phpactor', {['for'] = 'php', tag = '*', ['do'] = 'composer install --no-dev -o'}}
+    use 'Yggdroot/indentLine'
+    use {'prettier/vim-prettier', { ['do'] = 'yarn install' }}
+    use 'scrooloose/nerdcommenter'
+    use 'mhinz/vim-startify'
+    use 'karb94/neoscroll.nvim'
+    use 'godlygeek/tabular'
+    use 'plasticboy/vim-markdown'
+    use {'iamcco/markdown-preview.nvim', { ['do'] = 'cd app && yarn install' }}
+    use 'liuchengxu/vim-which-key'
+    use 'elzr/vim-json'
+    use 'kevinoid/vim-jsonc'
+    use 'tpope/vim-surround'
+    use 'tpope/vim-repeat'
+    use 'tpope/vim-fugitive'
+    use 'APZelos/blamer.nvim'
+    use 'terryma/vim-multiple-cursors'
+    use 'junegunn/vim-easy-align'
+    use 'haya14busa/incsearch.vim'
+    use 'easymotion/vim-easymotion'
+    use 'jiangmiao/auto-pairs'
+    use {'junegunn/fzf', { ['do'] = vim.fn['fzf#install']}}
+    use 'junegunn/fzf.vim'
+    use 'antoinemadec/coc-fzf'
+    use 'junegunn/goyo.vim'
+    use 'editorconfig/editorconfig-vim'
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use 'xiyaowong/nvim-transparent'
+    use {
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icons
+      },
+      tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
+    -- colorscheme
+    use 'vim-airline/vim-airline'
+    use 'vim-airline/vim-airline-themes'
+    use 'morhetz/gruvbox'
+    use 'lifepillar/vim-solarized8'
+    use 'ryanoasis/vim-devicons'
+end)

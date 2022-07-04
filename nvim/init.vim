@@ -30,6 +30,7 @@ colorscheme gruvbox
 " BASIC SETTINGS 
 lua require('basic')
 lua require('neoscroll').setup();
+lua require('config-nvim-tree')
 
 " plugins settings
 "
