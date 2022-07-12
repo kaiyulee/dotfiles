@@ -25,11 +25,11 @@ lua require('manager')
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-colorscheme gruvbox
+colorscheme everforest
 
 " BASIC SETTINGS 
 lua require('basic')
-lua require('neoscroll').setup();
+lua require('neoscroll').setup()
 lua require('config-nvim-tree')
 
 " plugins settings

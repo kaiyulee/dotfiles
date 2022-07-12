@@ -1,5 +1,5 @@
 require("nvim-tree").setup({
-  sort_by = "case_sensitive",
+  sort_by = "name",
   view = {
     adaptive_size = true,
   },
@@ -14,4 +14,7 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = false,
   },
+  disable_netrw = true,
+  open_on_setup = true,
+  open_on_tab = true
 })

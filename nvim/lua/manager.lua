@@ -44,6 +44,8 @@ return require('packer').startup(function()
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
     use 'morhetz/gruvbox'
+    use 'sainnhe/everforest'
+    use 'john2x/flatui.vim'
     use 'lifepillar/vim-solarized8'
     use 'ryanoasis/vim-devicons'
 end)
