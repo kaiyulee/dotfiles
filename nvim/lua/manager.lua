@@ -4,7 +4,8 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'wakatime/vim-wakatime'
-    use {'neoclide/coc.nvim', branch = 'release'}
+    --use {'neoclide/coc.nvim', branch = 'release'}
+    use {'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile'}
     use {'phpactor/phpactor', {['for'] = 'php', tag = '*', ['do'] = 'composer install --no-dev -o'}}
     use 'Yggdroot/indentLine'
     use {'prettier/vim-prettier', { ['do'] = 'yarn install' }}

@@ -94,6 +94,16 @@ _G.packer_plugins = {
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
     url = "https://github.com/editorconfig/editorconfig-vim"
   },
+  everforest = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
+  },
+  ["flatui.vim"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/flatui.vim",
+    url = "https://github.com/john2x/flatui.vim"
+  },
   fzf = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/fzf",
@@ -144,10 +154,20 @@ _G.packer_plugins = {
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/nvim-transparent",
     url = "https://github.com/xiyaowong/nvim-transparent"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

@@ -29,30 +29,6 @@
         }
     },
     "java.format.settings.url": "/Users/beke/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
-    "explorer.root.strategies": [
-        "workspace",
-        "cwd",
-        "sourceBuffer",
-        "reveal"
-    ],
-    "explorer.presets": {
-        "code": {
-            "root-uri": "~/Code",
-            "quit-on-open": true
-        },
-        "floating": {
-            "position": "floating",
-            "floating-position": "center",
-            "quit-on-open": true
-        },
-        "leftSide":{
-            "position": "left",
-            "quit-on-open": false
-        }
-    },
-    "explorer.file.showHiddenFiles": true,
-    "explorer.icon.enableNerdfont": true,
-    "explorer.width": 30,
     "sql.database": "mysql",
     "php-cs-fixer.enable": true,
     "php-cs-fixer.toolPath": "/usr/local/opt/php-cs-fixer/bin/php-cs-fixer",

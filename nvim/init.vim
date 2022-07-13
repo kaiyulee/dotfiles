@@ -64,6 +64,9 @@ let g:gruvbox_italicize_comments=1
 " lua require('nvim-treesitter.configs').setup {ensure_installed = "maintained", highlight = { enable = true,},}
 
 " airline settings
+let g:airline_theme='everforest'
+let g:airline_skip_empty_sections = 0
+
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -93,11 +96,9 @@ let g:airline#extensions#tabline#buf_label_first = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#csv#enabled = 0
 let g:airline#extensions#whitespace#enabled = 1
-let g:airline#extensions#whitespace#checks = ['trailing']
+let g:airline#extensions#whitespace#checks = ['trailing', 'indent']
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#ycm#enabled = 1
-let g:airline_theme='gruvbox'
-let g:airline_skip_empty_sections = 0
+let g:airline#extensions#battery#enabled = 1
 " let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'])
 
 " vim-easy-align
@@ -197,6 +198,8 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+" show documentation on cursor hover
+autocmd CursorHold * silent call <SID>show_documentation()
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
