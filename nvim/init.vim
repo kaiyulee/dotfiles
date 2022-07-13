@@ -199,7 +199,7 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " show documentation on cursor hover
-autocmd CursorHold * silent call <SID>show_documentation()
+" autocmd CursorHold * silent call <SID>show_documentation()
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
