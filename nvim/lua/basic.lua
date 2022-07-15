@@ -1,5 +1,4 @@
 vim.g.mapleader = ','
-vim.opt.background = 'dark'
 vim.opt.autoindent = true
 vim.opt.termguicolors = true
 vim.opt.number = true
