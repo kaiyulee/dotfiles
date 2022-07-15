@@ -40,6 +40,8 @@ return require('packer').startup(function()
       },
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
+    use 'SirVer/ultisnips'
+    use 'honza/vim-snippets'
     -- colorscheme
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
@@ -48,6 +50,7 @@ return require('packer').startup(function()
     use 'john2x/flatui.vim'
     use 'lifepillar/vim-solarized8'
     use 'ryanoasis/vim-devicons'
-    use 'SirVer/ultisnips'
-    use 'honza/vim-snippets'
+    use 'f-person/auto-dark-mode.nvim'
+    use { '4513ECHO/vim-colors-hatsunemiku' }
+    --
 end)

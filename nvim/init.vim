@@ -12,29 +12,11 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-lua require('manager')
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-colorscheme everforest
-
-" BASIC SETTINGS 
+lua require('plugins')
 lua require('basic')
-lua require('neoscroll').setup()
-lua require('config-nvim-tree')
+lua require('settings')
 
 " plugins settings
-"
-source $HOME/.config/nvim/plugins/coc-explorer.vim
 
 " vim-which-key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -49,22 +31,12 @@ let g:blamer_relative_time = 1
 
 
 
-hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg "隐藏~"
-
-" colorscheme setting current gruvbox
-let g:gruvbox_number_column='bg1'
-let g:gruvbox_bold=1
-let g:gruvbox_italic=1
-let g:gruvbox_underline=1
-let g:gruvbox_termcolors=256
-let g:gruvbox_contrast_light="hard"
-let g:gruvbox_italicize_comments=1
-
+"隐藏~
+"hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 
 " lua require('nvim-treesitter.configs').setup {ensure_installed = "maintained", highlight = { enable = true,},}
 
 " airline settings
-let g:airline_theme='everforest'
 let g:airline_skip_empty_sections = 0
 
 nmap <leader>1 <Plug>AirlineSelectTab1
