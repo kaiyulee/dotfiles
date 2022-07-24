@@ -182,13 +182,15 @@ auto_dark_mode.setup({
     update_interval = 1000,
     set_dark_mode = function()
         vim.api.nvim_set_option('background', 'dark')
-        vim.cmd('colorscheme everforest')
-        vim.g['airline_theme'] = 'everforest'
+        vim.cmd('colorscheme github_dark_default')
+        vim.g['airline_theme'] = 'raven'
+        vim.cmd('AirlineRefresh')
     end,
     set_light_mode = function()
         vim.api.nvim_set_option('background', 'light')
-        vim.cmd('colorscheme hatsunemiku_light')
-        vim.g['airline_theme'] = 'hatsunemiku_light'
+        vim.cmd('colorscheme github_light_default')
+        vim.g['airline_theme'] = 'silver'
+        vim.cmd('AirlineRefresh')
         -- vim.g['gruvbox_number_column'] = 'bg1'
         -- vim.g['gruvbox_bold'] = 1
         -- vim.g['gruvbox_italic'] = 1
@@ -236,6 +238,8 @@ vim.g['airline#extensions#whitespace#enabled'] = 1
 vim.g['airline#extensions#whitespace#checks'] = {'trailing', 'indent'}
 vim.g['airline#extensions#branch#enabled'] = 1
 vim.g['airline#extensions#battery#enabled'] = 1
+vim.g['airline#extensions#fzf#enabled'] = 1
+vim.g['airline#extensions#coc#enabled'] = 1
 -- vim.g['airline_section_c'] = airline#section#create_left(['%f', '%{strftime("%T")}'])
 
 -- indentLine
@@ -251,5 +255,7 @@ vim.g['indentLine_leadingSpaceChar'] = ' '
 vim.g['indentLine_leadingSpaceEnabled'] = 1
 vim.g['WebDevIconsNerdTreeAfterGlyphPadding'] = ' '
 
+-- fzf-preview
+vim.g['fzf_preview_use_dev_icons'] = 1
 vim.cmd [[
 ]]

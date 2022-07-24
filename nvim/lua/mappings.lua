@@ -206,4 +206,5 @@ vmap('<leader>fmt', '<Plug>(coc-format-selected)')
 nmap('<leader>fmt', '<Plug>(coc-format-selected)')
 
 -- nvim-tree
-nmap('<leader>t', [[:NvimTreeFocus<cr>]], {})
+nmap('<leader>tg', [[:NvimTreeToggle<cr>]], {})
+nmap('<leader>tf', [[:NvimTreeFocus<cr>]], {})

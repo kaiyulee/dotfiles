@@ -88,7 +88,7 @@ vim.cmd[[
 
 -- Customize fzf colors to match your color scheme
 -- - fzf#wrap translates this to a set of `--color` options
-local fzf_colors = { 
+local fzf_colors = {
    fg=      {'fg', 'Normal'},
    bg=      {'bg', 'Normal'},
    hl=      {'fg', 'Comment'},
