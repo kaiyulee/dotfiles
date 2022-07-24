@@ -15,7 +15,7 @@ require('plugins')
 require('basic')
 require('settings.misc')
 require('settings.coc')
-require('mapping')
+require('mappings')
 
 -- 隐藏~
 -- vim.cmd 'hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg'

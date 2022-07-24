@@ -205,3 +205,5 @@ vim.api.nvim_create_user_command(
 vmap('<leader>fmt', '<Plug>(coc-format-selected)')
 nmap('<leader>fmt', '<Plug>(coc-format-selected)')
 
+-- nvim-tree
+nmap('<leader>t', [[:NvimTreeFocus<cr>]], {})
