@@ -22,15 +22,6 @@ lua require('settings')
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 
-" blamer
-let g:blamer_enabled = 1
-let g:blamer_delay = 200
-let g:blamer_show_in_visual_modes = 0
-let g:blamer_prefix = ' ❱❱❱ '
-let g:blamer_relative_time = 1
-
-
-
 "隐藏~
 "hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 
@@ -51,27 +42,6 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 
-let g:airline#extensions#tabline#formatter = 'short_path'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_tab_count = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '⎹⎸'
-let g:airline#extensions#tabline#show_splits = 1
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
-let g:airline#extensions#tabline#buf_label_first = 1
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#csv#enabled = 0
-let g:airline#extensions#whitespace#enabled = 1
-let g:airline#extensions#whitespace#checks = ['trailing', 'indent']
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#battery#enabled = 1
-" let g:airline_section_c = airline#section#create_left(['%f', '%{strftime("%T")}'])
 
 " vim-easy-align
     " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -82,18 +52,6 @@ nmap al <Plug>(EasyAlign)
 "phpactor
 autocmd FileType php set iskeyword+=$
 
-" indentLine
-"let g:indentLine_setColors = 0
-let g:indentLine_color_term = 239
-let g:indentLine_char = '│'
-"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_showFirstIndentLevel = 0
-let g:indentLine_fileType = ['php', 'go', 'js', 'html', 'vue', 'json', 'yaml', 'java']
-let g:vim_json_syntax_conceal = 0
-" let g:indentLine_leadingSpaceChar = '˽'
-let g:indentLine_leadingSpaceChar = ' '
-let g:indentLine_leadingSpaceEnabled = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 " coc.nvim
 "
