@@ -183,7 +183,7 @@ auto_dark_mode.setup({
     set_dark_mode = function()
         vim.api.nvim_set_option('background', 'dark')
         vim.cmd('colorscheme github_dark_default')
-        vim.g['airline_theme'] = 'raven'
+        vim.g['airline_theme'] = 'ravenpower'
         vim.cmd('AirlineRefresh')
     end,
     set_light_mode = function()
@@ -215,11 +215,6 @@ vim.g['blamer_relative_time'] = 1
 vim.g['airline_skip_empty_sections'] = 0
 vim.g['airline#extensions#tabline#formatter'] = 'short_path'
 vim.g['airline_powerline_fonts'] = 1
-vim.g['airline#extensions#branch#enabled'] = 1
-vim.g['airline_skip_empty_sections'] = 0
-
-vim.g['airline#extensions#tabline#formatter'] = 'short_path'
-vim.g['airline_powerline_fonts'] = 1
 vim.g['airline#extensions#tabline#enabled'] = 1
 vim.g['airline#extensions#tabline#show_buffers'] = 1
 vim.g['airline#extensions#tabline#show_tabs'] = 1
@@ -232,8 +227,8 @@ vim.g['airline#extensions#tabline#show_tab_nr'] = 1
 vim.g['airline#extensions#tabline#buffer_idx_mode'] = 1
 vim.g['airline#extensions#tabline#switch_buffers_and_tabs'] = 1
 vim.g['airline#extensions#tabline#buf_label_first'] = 1
-vim.g['airline#extensions#hunks#enabled'] = 0
-vim.g['airline#extensions#csv#enabled'] = 0
+vim.g['airline#extensions#hunks#enabled'] = 1
+vim.g['airline#extensions#csv#enabled'] = 1
 vim.g['airline#extensions#whitespace#enabled'] = 1
 vim.g['airline#extensions#whitespace#checks'] = {'trailing', 'indent'}
 vim.g['airline#extensions#branch#enabled'] = 1
@@ -248,7 +243,7 @@ vim.g['indentLine_color_term'] = 239
 vim.g['indentLine_char'] = '│'
 vim.g['indentLine_char_list'] = {'|', '¦', '┆', '┊'}
 vim.g['indentLine_showFirstIndentLevel'] = 0
-vim.g['indentLine_fileType'] = {'php', 'go', 'js', 'html', 'vue', 'json', 'yaml', 'java'}
+vim.g['indentLine_fileType'] = {'php', 'go', 'js', 'html', 'vue', 'json', 'yaml', 'java', 'lua'}
 vim.g['vim_json_syntax_conceal'] = 0
 -- vim.g['indentLine_leadingSpaceChar'] = '˽'
 vim.g['indentLine_leadingSpaceChar'] = ' '
@@ -257,5 +252,3 @@ vim.g['WebDevIconsNerdTreeAfterGlyphPadding'] = ' '
 
 -- fzf-preview
 vim.g['fzf_preview_use_dev_icons'] = 1
-vim.cmd [[
-]]

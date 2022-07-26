@@ -48,6 +48,8 @@ map('n', '<leader>9', '<Plug>AirlineSelectTab9')
 map('n', '<leader>9', '<Plug>AirlineSelectTab9')
 map('n', '<leader>-', '<Plug>AirlineSelectPrevTab')
 map('n', '<leader>+', '<Plug>AirlineSelectNextTab')
+nmap('<F1>', ':bp<cr>', {silent = true}) -- buffer prev
+nmap('<F2>', ':bn<cr>', {silent = true}) -- buffer next
 -- vim-easy-align
     -- Start interactive EasyAlign in visual mode (e.g. vipga)
 map('x', 'al', '<Plug>(EasyAlign)')
@@ -195,16 +197,10 @@ map('', '#', 'Plug>(incsearch-nohl-#)')
 map('', 'g*', '<Plug>(incsearch-nohl-g*)')
 map('', 'g#', '<Plug>(incsearch-nohl-g#)')
 
--- " plugin coc-prettier
--- command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vim.api.nvim_create_user_command(
-    'Prettier',
-    'CocCommand prettier.formatFile',
-    {nargs = 0, bang = true}
-)
 vmap('<leader>fmt', '<Plug>(coc-format-selected)')
 nmap('<leader>fmt', '<Plug>(coc-format-selected)')
 
 -- nvim-tree
 nmap('<leader>tg', [[:NvimTreeToggle<cr>]], {})
 nmap('<leader>tf', [[:NvimTreeFocus<cr>]], {})
+nmap('<leader>tr', [[:NvimTreeFindFile<cr>]], {})

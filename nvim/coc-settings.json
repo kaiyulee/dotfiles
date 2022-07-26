@@ -26,48 +26,6 @@
         "nginx.conf",
         ".git"
       ]
-    },
-    "lua": {
-      "command": "/Users/beke/.config/coc/extensions/coc-lua-data/sumneko-lua-ls/bin/macOS/lua-language-server",
-      "filetypes": [
-        "lua"
-      ],
-      "rootPatterns": [
-        ".git/"
-      ],
-      "settings": {
-        "Lua": {
-          "workspace": {
-            "library": {
-              "/usr/local/share/nvim/runtime/lua": true,
-              "/usr/local/share/nvim/runtime/lua/vim": true,
-              "/usr/local/share/nvim/runtime/lua/vim/lsp": true
-            },
-            "maxPreload": 2000,
-            "preloadFileSize": 1000
-          },
-          "runtime": {
-            "version": "5.4.3"
-          },
-          "diagnostics": {
-            "disable": [
-              "undefined-global",
-              "lowercase-global",
-              "unused-local",
-              "unused-vararg",
-              "trailing-space"
-            ],
-            "globals": [
-              "vim",
-              "hs",
-              "it",
-              "describe",
-              "before_each",
-              "after_each"
-            ]
-          }
-        }
-      }
     }
   },
   "java.format.settings.url": "/Users/beke/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
@@ -76,7 +34,7 @@
   "php-cs-fixer.toolPath": "/usr/local/opt/php-cs-fixer/bin/php-cs-fixer",
   "php-cs-fixer.config": "/Users/beke/.php-cs-fixer.php",
   "php-cs-fixer.rules": "@PSR12,@Symfony",
-  "phpactor.enable": true,
-  "phpactor.path": "/Users/beke/.vim/plugged/phpactor/bin/phpactor",
-  "intelephense.licenceKey": "005Q9S3XHM1K1GO"
+  "php-cs-fixer.activateTool": "php-cs-fixer",
+  "intelephense.licenceKey": "005Q9S3XHM1K1GO",
+  "sumneko-lua.enableNvimLuaDev": true
 }
