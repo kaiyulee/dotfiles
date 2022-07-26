@@ -34,6 +34,7 @@ vim.opt.linespace=5                         -- give the code some breathing room
 vim.opt.list = true
 vim.opt.listchars = {tab = '  ', trail = '∙'}
 vim.opt.fillchars = {vert = ' '}
+vim.opt.redrawtime = 10000 -- syntax enable for big file
 vim.g['UltiSnipsExpandTrigger'] = '<c-e>'
 vim.g['UltiSnipsJumpForwardTrigger='] = '<c-b>'
 vim.g['UltiSnipsJumpBackwardTrigger'] = '<c-z>'

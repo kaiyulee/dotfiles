@@ -50,6 +50,7 @@ map('n', '<leader>-', '<Plug>AirlineSelectPrevTab')
 map('n', '<leader>+', '<Plug>AirlineSelectNextTab')
 nmap('<F1>', ':bp<cr>', {silent = true}) -- buffer prev
 nmap('<F2>', ':bn<cr>', {silent = true}) -- buffer next
+nmap('<leader>d', ':bd<cr>', {silent = true}) -- delete buffer
 -- vim-easy-align
     -- Start interactive EasyAlign in visual mode (e.g. vipga)
 map('x', 'al', '<Plug>(EasyAlign)')
