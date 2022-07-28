@@ -53,4 +53,5 @@ return require('packer').startup(function()
     use 'f-person/auto-dark-mode.nvim'
     use { '4513ECHO/vim-colors-hatsunemiku' }
     use { 'projekt0n/github-nvim-theme' }
+    use { 'flazz/vim-colorschemes' }
 end)
