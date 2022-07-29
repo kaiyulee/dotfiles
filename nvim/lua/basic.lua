@@ -18,7 +18,7 @@ vim.opt.ignorecase = true
 vim.opt.ruler = true
 vim.opt.title = true
 vim.opt.pastetoggle='<F9>'
-vim.opt.cursorline  = true-- cursorcolumn
+vim.opt.cursorline  = true -- cursorcolumn
 vim.opt.wrap = true-- auto break line,[nowrap for the other side]
 vim.opt.laststatus=2 -- Always show the status line
 vim.opt.encoding='utf8'
@@ -34,17 +34,11 @@ vim.opt.ambiwidth='single'
 vim.opt.linespace=5                         -- give the code some breathing room
 vim.opt.list = true
 vim.opt.listchars = {tab = '  ', trail = '∙'}
-vim.opt.fillchars = {vert = ' '}
+vim.opt.fillchars = {vert = ' ', eob = ' ', msgsep = '‾'}
 vim.opt.redrawtime = 10000 -- syntax enable for big file
 vim.g['UltiSnipsExpandTrigger'] = '<c-e>'
 vim.g['UltiSnipsJumpForwardTrigger='] = '<c-b>'
 vim.g['UltiSnipsJumpBackwardTrigger'] = '<c-z>'
-
--- 隐藏~
-vim.cmd 'hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg'
-
-
-
 
 --phpactor
 vim.cmd[[

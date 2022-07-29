@@ -54,4 +54,6 @@ return require('packer').startup(function()
     use { '4513ECHO/vim-colors-hatsunemiku' }
     use { 'projekt0n/github-nvim-theme' }
     use { 'flazz/vim-colorschemes' }
+    use { 'relastle/bluewery.vim' }
+    use { 'raphamorim/lucario' }
 end)

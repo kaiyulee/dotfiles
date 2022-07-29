@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["auto-dark-mode.nvim"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/auto-dark-mode.nvim",
+    url = "https://github.com/f-person/auto-dark-mode.nvim"
+  },
   ["auto-pairs"] = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/auto-pairs",
@@ -78,6 +83,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/blamer.nvim",
     url = "https://github.com/APZelos/blamer.nvim"
+  },
+  ["bluewery.vim"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/bluewery.vim",
+    url = "https://github.com/relastle/bluewery.vim"
   },
   ["coc-fzf"] = {
     loaded = true,
@@ -113,6 +123,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/fzf.vim",
     url = "https://github.com/junegunn/fzf.vim"
+  },
+  ["github-nvim-theme"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
+    url = "https://github.com/projekt0n/github-nvim-theme"
   },
   ["goyo.vim"] = {
     loaded = true,
@@ -184,6 +199,11 @@ _G.packer_plugins = {
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/tabular",
     url = "https://github.com/godlygeek/tabular"
   },
+  ultisnips = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/ultisnips",
+    url = "https://github.com/SirVer/ultisnips"
+  },
   ["vim-airline"] = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/vim-airline",
@@ -193,6 +213,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/vim-airline-themes",
     url = "https://github.com/vim-airline/vim-airline-themes"
+  },
+  ["vim-colors-hatsunemiku"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/vim-colors-hatsunemiku",
+    url = "https://github.com/4513ECHO/vim-colors-hatsunemiku"
+  },
+  ["vim-colorschemes"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/vim-colorschemes",
+    url = "https://github.com/flazz/vim-colorschemes"
   },
   ["vim-devicons"] = {
     loaded = true,
@@ -243,6 +273,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
+  },
+  ["vim-snippets"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/vim-snippets",
+    url = "https://github.com/honza/vim-snippets"
   },
   ["vim-solarized8"] = {
     loaded = true,
