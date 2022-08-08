@@ -35,6 +35,6 @@
   "php-cs-fixer.config": "/Users/beke/.php-cs-fixer.php",
   "php-cs-fixer.rules": "@PSR12,@Symfony",
   "php-cs-fixer.activateTool": "php-cs-fixer",
-  "intelephense.licenceKey": "005Q9S3XHM1K1GO",
+  "intelephense.licenceKey": "YOUR LICENSE",
   "sumneko-lua.enableNvimLuaDev": true
 }

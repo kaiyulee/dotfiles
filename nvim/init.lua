@@ -12,6 +12,5 @@
 
 require('plugins')
 require('basic')
-require('settings.misc')
-require('settings.coc')
+require('settings')
 require('mappings')

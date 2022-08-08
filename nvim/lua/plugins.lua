@@ -6,7 +6,8 @@ return require('packer').startup(function()
     use 'wakatime/vim-wakatime'
     use {'neoclide/coc.nvim', branch = 'release'}
     use {'phpactor/phpactor', {['for'] = 'php', tag = '*', ['do'] = 'composer install --no-dev -o'}}
-    use 'Yggdroot/indentLine'
+    --use 'Yggdroot/indentLine'
+    use "lukas-reineke/indent-blankline.nvim"
     use {'prettier/vim-prettier', { ['do'] = 'yarn install' }}
     use 'scrooloose/nerdcommenter'
     use 'mhinz/vim-startify'
@@ -40,11 +41,21 @@ return require('packer').startup(function()
       },
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
+    use {
+        'akinsho/bufferline.nvim',
+        tag = "v2.*",
+        requires = 'kyazdani42/nvim-web-devicons'
+    }
+
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
     -- colorscheme
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+    --use 'vim-airline/vim-airline'
+    --use 'vim-airline/vim-airline-themes'
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
     use 'morhetz/gruvbox'
     use 'sainnhe/everforest'
     use 'john2x/flatui.vim'

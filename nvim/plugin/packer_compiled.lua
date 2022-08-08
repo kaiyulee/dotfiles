@@ -144,10 +144,20 @@ _G.packer_plugins = {
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/incsearch.vim",
     url = "https://github.com/haya14busa/incsearch.vim"
   },
-  indentLine = {
+  ["indent-blankline.nvim"] = {
     loaded = true,
-    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/indentLine",
-    url = "https://github.com/Yggdroot/indentLine"
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  lucario = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/lucario",
+    url = "https://github.com/raphamorim/lucario"
   },
   ["markdown-preview.nvim"] = {
     loaded = true,
@@ -203,16 +213,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
-  },
-  ["vim-airline"] = {
-    loaded = true,
-    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
-  },
-  ["vim-airline-themes"] = {
-    loaded = true,
-    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/vim-airline-themes",
-    url = "https://github.com/vim-airline/vim-airline-themes"
   },
   ["vim-colors-hatsunemiku"] = {
     loaded = true,
