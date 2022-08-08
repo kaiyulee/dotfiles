@@ -21,6 +21,9 @@ return require('packer').startup(function()
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
     use 'tpope/vim-fugitive'
+    use 'lewis6991/gitsigns.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'APZelos/blamer.nvim'
     use 'terryma/vim-multiple-cursors'
     use 'junegunn/vim-easy-align'

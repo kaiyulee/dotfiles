@@ -35,22 +35,23 @@ end
 -- vim-which-key
 map('n', '<Leader> ', ':WhichKey <Space>');
 
--- airline settings
-map('n', '<leader>1', '<Plug>AirlineSelectTab1')
-map('n', '<leader>2', '<Plug>AirlineSelectTab2')
-map('n', '<leader>3', '<Plug>AirlineSelectTab3')
-map('n', '<leader>4', '<Plug>AirlineSelectTab4')
-map('n', '<leader>5', '<Plug>AirlineSelectTab5')
-map('n', '<leader>6', '<Plug>AirlineSelectTab6')
-map('n', '<leader>7', '<Plug>AirlineSelectTab7')
-map('n', '<leader>8', '<Plug>AirlineSelectTab8')
-map('n', '<leader>9', '<Plug>AirlineSelectTab9')
-map('n', '<leader>9', '<Plug>AirlineSelectTab9')
-map('n', '<leader>-', '<Plug>AirlineSelectPrevTab')
-map('n', '<leader>+', '<Plug>AirlineSelectNextTab')
-nmap('<F1>', ':bp<cr>', {silent = true}) -- buffer prev
-nmap('<F2>', ':bn<cr>', {silent = true}) -- buffer next
+-- bufferline settings
+-- https://github.com/akinsho/bufferline.nvim
+map('n', '<leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>')
+map('n', '<leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>')
+map('n', '<leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>')
+map('n', '<leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>')
+map('n', '<leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>')
+map('n', '<leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>')
+map('n', '<leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>')
+map('n', '<leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>')
+map('n', '<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>')
+map('n', '<leader>-', '<Cmd>BufferLineCycleNext<CR>')
+map('n', '<leader>+', '<Cmd>BufferLineCyclePrev<CR>')
+nmap('<F1>', ':BufferLineCycleNext<CR>', {silent = true}) -- buffer prev
+nmap('<F2>', ':BufferLineCyclePrev<CR>', {silent = true}) -- buffer next
 nmap('<leader>d', ':bd<cr>', {silent = true}) -- delete buffer
+
 -- vim-easy-align
     -- Start interactive EasyAlign in visual mode (e.g. vipga)
 map('x', 'al', '<Plug>(EasyAlign)')
@@ -58,32 +59,20 @@ map('x', 'al', '<Plug>(EasyAlign)')
 map('n', 'al', '<Plug>(EasyAlign)')
 
 -- " coc.nvim
--- inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
--- inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-map('i', '<S-Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
--- inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-map('i', '<cr>', 'pumvisible() ? "\\<C-y>" : "\\<C-g>u\\<CR>', {expr = true})
+--Use tab for trigger completion with characters ahead and navigate. 
+--NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+--other plugin before putting this into your config.
+map('i', '<TAB>', 'coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\\<Tab>" : coc#refresh()', {silent = true, expr = true})
+map('i', '<S-TAB>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"', {silent = true, expr = true})
+-- Make <CR> to accept selected completion item or notify coc.nvim to format
+-- <C-g>u breaks current undo, please make your own choice.
+map('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"', {silent = true,expr = true})
 
--- " Use tab for trigger completion with characters ahead and navigate.
--- " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
--- " other plugin before putting this into your config.
-map('i', '<S-TAB>', 'pumvisible() ? "\\<C-p>" : "\\<C-h>"', {expr = true})
 
 -- " Use <c-space> to trigger completion.
 -- inoremap <silent><expr> <c-space> coc#refresh()
-map('i', '<c-space', 'coc#refresh', {silent = true, expr = true})
+map('i', '<c-space>', 'coc#refresh', {silent = true, expr = true})
 
--- " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
--- " position. Coc only does snippet and additional edit on confirm.
-if vim.fn.has('patch8.1.1068') then
---   " Use `complete_info` if your (Neo)Vim version supports it.
---   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-  map('i', '<cr>', 'complete_info()["selected"] != "-1" ? "\\<C-y>" : "\\<C-g>u\\<CR>"', {expr = true})
-else
---   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  map('i', '<cr>', 'pumvisible() ? "\\<C-y>" : "\\<C-g>u\\<CR>"', {expr = true})
-end
 
 -- " scroll in float window
 if vim.fn.has('nvim-0.4.0') or vim.fn.has('patch-8.2.0750') then

@@ -65,7 +65,7 @@ require('bufferline').setup {
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
     -- separator_style = "slant" | "thick" | "thin" | { 'any', 'any' },
-    separator_style = "slant",
+    separator_style = "thick",
     enforce_regular_tabs = false,
     always_show_bufferline = true,
     sort_by = 'tabs'

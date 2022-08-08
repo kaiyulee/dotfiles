@@ -1,5 +1,6 @@
 require('settings.coc')
 require('settings.misc')
-require('settings.lualine')
+-- require('settings.lualine')
 require('settings.indent-line')
 require('settings.bufferline')
+require('settings.nvim-tree')
