@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function() 
+return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'wakatime/vim-wakatime'
@@ -52,9 +52,6 @@ return require('packer').startup(function()
 
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
-    -- colorscheme
-    --use 'vim-airline/vim-airline'
-    --use 'vim-airline/vim-airline-themes'
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }

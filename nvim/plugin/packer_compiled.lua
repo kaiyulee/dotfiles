@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/bluewery.vim",
     url = "https://github.com/relastle/bluewery.vim"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["coc-fzf"] = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/coc-fzf",
@@ -98,6 +103,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
+  },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
   },
   ["editorconfig-vim"] = {
     loaded = true,
@@ -128,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
     url = "https://github.com/projekt0n/github-nvim-theme"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["goyo.vim"] = {
     loaded = true,
@@ -203,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/beke/.local/share/nvim/site/pack/packer/start/phpactor",
     url = "https://github.com/phpactor/phpactor"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/beke/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   tabular = {
     loaded = true,
