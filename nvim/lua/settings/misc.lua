@@ -18,13 +18,13 @@ auto_dark_mode.setup({
     update_interval = 1000,
     set_dark_mode = function()
         vim.api.nvim_set_option('background', 'dark')
-        vim.cmd('colorscheme everforest')
-        require('nvim.lua.settings.lualine-default')
+        vim.cmd('colorscheme gruvbox')
+        require('settings.lualine').set_theme('gruvbox_dark');
     end,
     set_light_mode = function()
         vim.api.nvim_set_option('background', 'light')
-        vim.cmd('colorscheme hatsunemiku_light')
-        require('nvim.lua.settings.lualine-slanted-gaps')
+        vim.cmd('colorscheme gruvbox')
+        require('settings.lualine').set_theme('gruvbox_light')
     end
 })
 auto_dark_mode.init()
