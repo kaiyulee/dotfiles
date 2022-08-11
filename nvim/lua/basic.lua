@@ -12,7 +12,7 @@ vim.opt.expandtab = true
 vim.opt.textwidth=160
 vim.opt.shiftwidth=4
 -- context lines 始终距离顶部或者底部3行的距离
-vim.opt.so=3 
+vim.opt.so=3
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.ruler = true
@@ -33,7 +33,7 @@ vim.opt.ambiwidth='single'
 -- vim.opt. colorcolumn=85                     " visual indicator at column 120
 vim.opt.linespace=5                         -- give the code some breathing room
 vim.opt.list = true
-vim.opt.listchars = {tab = '  ', trail = '∙'}
+--vim.opt.listchars = {tab = '  ', trail = '∙'}
 vim.opt.fillchars = {vert = ' ', eob = ' ', msgsep = '‾'}
 vim.opt.redrawtime = 10000 -- syntax enable for big file
 vim.g['UltiSnipsExpandTrigger'] = '<c-e>'

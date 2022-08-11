@@ -14,7 +14,7 @@
   "java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home",
   "java.referencesCodeLens.enabled": true,
   "java.trace.server": "verbose",
-  "git.enableGutters": true,
+  "git.enableGutters": false,
   "languageserver": {
     "nginx-language-server": {
       "nginx.enable": true,
@@ -35,5 +35,7 @@
   "php-cs-fixer.config": "/Users/beke/.php-cs-fixer.php",
   "php-cs-fixer.rules": "@PSR12,@Symfony",
   "php-cs-fixer.activateTool": "php-cs-fixer",
-  "sumneko-lua.enableNvimLuaDev": true
+  "sumneko-lua.enableNvimLuaDev": true,
+  "intelephense.progress.enable":false,
+  "intelephense.client.disableInlayHints": true
 }
