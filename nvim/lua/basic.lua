@@ -97,10 +97,15 @@ vim.cmd[[
 --
 -- - Popup window (center of the current window)
 -- let $FZF_DEFAULT_OPTS = '--reverse'
-vim.cmd[[
-  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'relative': v:true } }
-  command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview-window', 'down', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+--vim.cmd[[
+  --let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8, 'relative': v:true } }
+  --command! -bang -nargs=? -complete=dir Files
+      --\ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview-window', 'down', '--preview', '~/.local/share/nvim/site/pack/packer/start/fzf.vim/bin/preview.sh {}']}, <bang>0)
+--]]
+
+vim.cmd [[
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window=right']}), <bang>0)
 ]]
 
 -- Customize fzf colors to match your color scheme
