@@ -14,7 +14,7 @@ return require('packer').startup(function()
     use 'karb94/neoscroll.nvim'
     use 'godlygeek/tabular'
     use 'plasticboy/vim-markdown'
-    use {'iamcco/markdown-preview.nvim', { ['do'] = 'cd app && yarn install' }}
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     use 'liuchengxu/vim-which-key'
     use 'elzr/vim-json'
     use 'kevinoid/vim-jsonc'
