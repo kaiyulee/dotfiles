@@ -105,7 +105,7 @@ vim.cmd[[
 
 vim.cmd [[
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window=right']}), <bang>0)
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window=up']}), <bang>0)
 ]]
 
 -- Customize fzf colors to match your color scheme
@@ -150,3 +150,5 @@ augroup custom_nginx
 augroup end
 
 ]]
+
+

@@ -37,5 +37,12 @@
   "php-cs-fixer.activateTool": "php-cs-fixer",
   "sumneko-lua.enableNvimLuaDev": true,
   "intelephense.progress.enable":true,
-  "intelephense.client.disableInlayHints": true
+  "intelephense.client.disableInlayHints": true,
+  "suggest.floatConfig": {
+      "border": true,
+      "rounded": true,
+      "shadow": false
+  },
+  "suggest.selection": "recentlyUsedByPrefix",
+  "suggest.noselect": true
 }

@@ -48,8 +48,8 @@ map('n', '<leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>')
 map('n', '<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>')
 map('n', '<leader>-', '<Cmd>BufferLineCycleNext<CR>')
 map('n', '<leader>+', '<Cmd>BufferLineCyclePrev<CR>')
-nmap('<F1>', ':BufferLineCycleNext<CR>', {silent = true}) -- buffer prev
-nmap('<F2>', ':BufferLineCyclePrev<CR>', {silent = true}) -- buffer next
+nmap('<F1>', ':BufferLineCyclePrev<CR>', {silent = true}) -- buffer prev
+nmap('<F2>', ':BufferLineCycleNext<CR>', {silent = true}) -- buffer next
 nmap('<leader>d', ':bd<cr>', {silent = true}) -- delete buffer
 
 -- vim-easy-align
@@ -67,6 +67,16 @@ map('i', '<S-TAB>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"', {silent =
 -- Make <CR> to accept selected completion item or notify coc.nvim to format
 -- <C-g>u breaks current undo, please make your own choice.
 map('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"', {silent = true,expr = true})
+
+--function! CheckBackspace() abort
+  --let col = col('.') - 1
+  --return !col || getline('.')[col - 1]  =~# '\s'
+--endfunction
+
+function CheckBackspace()
+    local col = vim.fn.col('.') - 1;
+    return false == col or vim.fn.getline('.')[col - 1] "=~# 's'";
+end
 
 
 -- " Use <c-space> to trigger completion.
