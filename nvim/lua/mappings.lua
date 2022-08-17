@@ -68,14 +68,18 @@ map('i', '<S-TAB>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"', {silent =
 -- <C-g>u breaks current undo, please make your own choice.
 map('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"', {silent = true,expr = true})
 
---function! CheckBackspace() abort
-  --let col = col('.') - 1
-  --return !col || getline('.')[col - 1]  =~# '\s'
---endfunction
+vim.cmd[[
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+]]
+
 
 function CheckBackspace()
     local col = vim.fn.col('.') - 1;
-    return false == col or vim.fn.getline('.')[col - 1] "=~# 's'";
+    vim.regex();
+    return false == col or vim.regex("#'\b'").match_str(vim.fn.getline('.')[col - 1]);
 end
 
 

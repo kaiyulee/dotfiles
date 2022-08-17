@@ -43,6 +43,6 @@
       "rounded": true,
       "shadow": false
   },
-  "suggest.selection": "recentlyUsedByPrefix",
-  "suggest.noselect": true
+  "suggest.selection":"first",
+  "suggest.noselect": false
 }
