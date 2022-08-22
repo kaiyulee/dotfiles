@@ -44,5 +44,6 @@
       "shadow": false
   },
   "suggest.selection":"first",
-  "suggest.noselect": false
+  "suggest.noselect": false,
+  "coc.preferences.extensionUpdateCheck": "daily"
 }
