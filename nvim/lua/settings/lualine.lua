@@ -30,8 +30,8 @@ local config = {
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {
             {
-                'filename', 
-                path = 1, 
+                'filename',
+                path = 1,
                 file_status = true,
                 symbols = {
                     modified = ' ',
@@ -61,7 +61,6 @@ local config = {
 }
 
 local function set_theme(theme)
-    local options = {theme = theme};
     if type(theme) == 'string' then
         config.options.theme = theme
     end
