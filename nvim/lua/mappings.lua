@@ -166,42 +166,19 @@ xmap('<TAB>', '<Plug>(coc-range-select)', {silent = true})
 map('', '<TAB>', '<Plug>(coc-range-select)', {silent = true})
 
 -- " Mappings using CoCList:
+nmap('<C-p>', ':Files<CR>')
 nmap('<space><space>', ':<C-u>CocFzfList<CR>')
 nmap('<space>a', ':<C-u>CocFzfList diagnostics<CR>')
 nmap('<space>c', ':<C-u>CocFzfList commands<CR>')
+nmap('<space>e', ':<C-u>CocFzfList mru<CR>')
 nmap('<space>l', ':<C-u>CocFzfList location<CR>')
 nmap('<space>s', ':<C-u>CocFzfList symbols<CR>')
+nmap('<space>o', ':<C-u>CocFzfList outline<CR>')
 nmap('<space>p', ':<C-u>CocFzfListResume<CR>')
-
--- Fzf preview
---nmap('<Leader>f', '[fzf-p]')
---xmap('<Leader>f', 'fzf-p]')
-
---nmap('[fzf-p]p',     ':<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>')
---nmap('[fzf-p]gst',   ':<C-u>CocCommand fzf-preview.GitStatus<CR>')
---nmap('[fzf-p]ga',    ':<C-u>CocCommand fzf-preview.GitActions<CR>')
---nmap('[fzf-p]b',     ':<C-u>CocCommand fzf-preview.Buffers<CR>')
---nmap('[fzf-p]B',     ':<C-u>CocCommand fzf-preview.AllBuffers<CR>')
---nmap('[fzf-p]o',     ':<C-u>CocCommand fzf-preview.FromResources buffer project_mru<CR>')
---nmap('[fzf-p]<C-o>', ':<C-u>CocCommand fzf-preview.Jumps<CR>')
---nmap('[fzf-p]g;',    ':<C-u>CocCommand fzf-preview.Changes<CR>')
---nmap('[fzf-p]/',     ':<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>')
--- nmap('[fzf-p]*',     ':<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>')
---nmap('[fzf-p]gr',    ':<C-u>CocCommand fzf-preview.ProjectGrep<Space>')
--- xmap('[fzf-p]gr',    '"sy:CocCommand   fzf-preview.ProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"')
---nmap('[fzf-p]t',     ':<C-u>CocCommand fzf-preview.BufferTags<CR>')
---nmap('[fzf-p]q',     ':<C-u>CocCommand fzf-preview.QuickFix<CR>')
---nmap('[fzf-p]l',     ':<C-u>CocCommand fzf-preview.LocationList<CR>')
-
-nmap('<C-p>', ':CocCommand fzf-preview.ProjectFiles<CR>')
-nmap('<space>e', ':CocCommand fzf-preview.ProjectMruFiles<CR>')
-nmap('<space>b', ':CocCommand fzf-preview.Buffers<CR>')
-nmap('<space>o', ':CocCommand fzf-preview.CocOutline<CR>')
 nmap('<leader>b', ':<C-u>Buffers<CR>')
 nmap('<leader>ag', ':<C-u>Ag<CR>')
-nmap('<leader>rg', ':<C:CocCommand fzf-preview.ProjectMruFiles<CR>-u>Rg<CR>')
--- " nnoremap <leader>at :<C-u>Tags<CR>:CocCommand fzf-preview.ProjectMruFiles<CR>
--- " nnoremap <leader>t :<C-u>BTags<CR>
+nmap('<leader>gc', ':<C-u>BCommits<CR>')
+nmap('<leader>t', ':<C-u>Tags<CR>')
 
 -- " plugin incsearch 
 vim.g['incsearch#auto_nohlsearch'] = 1
