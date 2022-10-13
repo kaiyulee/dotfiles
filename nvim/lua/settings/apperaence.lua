@@ -14,17 +14,18 @@ require('neoscroll').setup({
 
 -- auto_dark_mode
 vim.g.gruvbox_termcolors = 256
-vim.cmd('colorscheme gruvbox')
 local auto_dark_mode = require('auto-dark-mode')
 auto_dark_mode.setup({
     update_interval = 3000,
     set_dark_mode = function()
         vim.api.nvim_set_option('background', 'dark')
+        vim.cmd('colorscheme gruvbox')
         vim.cmd[[highlight CocMenuSel cterm=bold gui=bold ctermbg=NONE guibg=#282828]]
         require('settings.lualine').set_theme('gruvbox_dark');
     end,
     set_light_mode = function()
         vim.api.nvim_set_option('background', 'light')
+        vim.cmd('colorscheme gruvbox')
         vim.cmd[[highlight CocMenuSel cterm=bold gui=bold ctermbg=NONE guibg=#FCF3D0]]
         require('settings.lualine').set_theme('gruvbox_light')
     end
@@ -37,7 +38,7 @@ auto_dark_mode.init()
 vim.g['blamer_enabled'] = 1
 vim.g['blamer_delay'] = 200
 vim.g['blamer_show_in_visual_modes'] = 0
-vim.g['blamer_prefix'] = ' ❱❱❱ '
+vim.g['blamer_prefix'] = '  '
 vim.g['blamer_relative_time'] = 1
 
 -- fzf-preview
