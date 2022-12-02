@@ -67,4 +67,5 @@ return require('packer').startup(function()
     use { 'flazz/vim-colorschemes' }
     use { 'relastle/bluewery.vim' }
     use { 'raphamorim/lucario' }
+    use "fladson/vim-kitty"
 end)

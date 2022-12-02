@@ -45,5 +45,6 @@
   },
   "suggest.selection":"first",
   "suggest.noselect": false,
-  "coc.preferences.extensionUpdateCheck": "daily"
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "Lua.telemetry.enable": true
 }
