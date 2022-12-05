@@ -12,7 +12,7 @@ vim.opt.expandtab = true
 vim.opt.textwidth=160
 vim.opt.shiftwidth=4
 -- context lines 始终距离顶部或者底部3行的距离
---vim.opt.so=3
+vim.opt.so=3
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.ruler = true

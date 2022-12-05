@@ -4,17 +4,17 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'wakatime/vim-wakatime'
-    use {'neoclide/coc.nvim', branch = 'release'}
-    use {'phpactor/phpactor', {['for'] = 'php', tag = '*', ['do'] = 'composer install --no-dev -o'}}
+    use { 'neoclide/coc.nvim', branch = 'release' }
+    use { 'phpactor/phpactor', { ['for'] = 'php', tag = '*', ['do'] = 'composer install --no-dev -o' } }
     --use 'Yggdroot/indentLine'
     use "lukas-reineke/indent-blankline.nvim"
-    use {'prettier/vim-prettier', { ['do'] = 'yarn install' }}
-    use 'scrooloose/nerdcommenter'
+    use { 'prettier/vim-prettier', { ['do'] = 'yarn install' } }
     use 'mhinz/vim-startify'
     use 'karb94/neoscroll.nvim'
     use 'godlygeek/tabular'
     use 'plasticboy/vim-markdown'
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     use 'liuchengxu/vim-which-key'
     use 'elzr/vim-json'
     use 'kevinoid/vim-jsonc'
@@ -30,7 +30,7 @@ return require('packer').startup(function()
     use 'haya14busa/incsearch.vim'
     use 'easymotion/vim-easymotion'
     use 'jiangmiao/auto-pairs'
-    use {'junegunn/fzf', { ['do'] = vim.fn['fzf#install']}}
+    use { 'junegunn/fzf', { ['do'] = vim.fn['fzf#install'] } }
     use 'junegunn/fzf.vim'
     use 'antoinemadec/coc-fzf'
     use 'junegunn/goyo.vim'
@@ -38,11 +38,11 @@ return require('packer').startup(function()
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'xiyaowong/nvim-transparent'
     use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons', -- optional, for file icons
-      },
-      tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
     use {
         'akinsho/bufferline.nvim',
@@ -53,8 +53,8 @@ return require('packer').startup(function()
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
     use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     use 'morhetz/gruvbox'
     use 'sainnhe/everforest'
@@ -68,4 +68,5 @@ return require('packer').startup(function()
     use { 'relastle/bluewery.vim' }
     use { 'raphamorim/lucario' }
     use "fladson/vim-kitty"
+    use { 'numToStr/Comment.nvim' }
 end)
