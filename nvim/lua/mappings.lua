@@ -51,6 +51,8 @@ map('n', '<leader>+', '<Cmd>BufferLineCyclePrev<CR>')
 nmap('<F1>', ':BufferLineCyclePrev<CR>', {silent = true}) -- buffer prev
 nmap('<F2>', ':BufferLineCycleNext<CR>', {silent = true}) -- buffer next
 nmap('<leader>d', ':bd<cr>', {silent = true}) -- delete buffer
+-- nmap('<c-[>', ':BufferLineCyclePrev<CR>', {silent = true}) -- buffer prev
+-- nmap('<c-]>', ':BufferLineCycleNext<CR>', {silent = true}) -- buffer next
 
 -- vim-easy-align
     -- Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -170,12 +172,13 @@ nmap('<C-p>', ':Files<CR>')
 nmap('<space><space>', ':<C-u>CocFzfList<CR>')
 nmap('<space>a', ':<C-u>CocFzfList diagnostics<CR>')
 nmap('<space>c', ':<C-u>CocFzfList commands<CR>')
-nmap('<space>e', ':<C-u>CocFzfList mru<CR>')
+-- nmap('<space>e', ':<C-u>CocFzfList mru<CR>')
+nmap('<space>e', ':CocCommand fzf-preview.ProjectMruFiles<CR>')
 nmap('<space>l', ':<C-u>CocFzfList location<CR>')
 nmap('<space>s', ':<C-u>CocFzfList symbols<CR>')
 nmap('<space>o', ':<C-u>CocFzfList outline<CR>')
 nmap('<space>p', ':<C-u>CocFzfListResume<CR>')
-nmap('<leader>b', ':<C-u>Buffers<CR>')
+nmap('<leader>b', ':CocCommand fzf-preview.Buffers<CR>')
 nmap('<leader>ag', ':<C-u>Ag<CR>')
 nmap('<leader>gc', ':<C-u>BCommits<CR>')
 nmap('<leader>t', ':<C-u>Tags<CR>')

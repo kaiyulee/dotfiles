@@ -3,7 +3,7 @@ vim.bo.filetype = 'off'
 vim.opt.autoindent = true
 vim.opt.termguicolors = true
 vim.opt.number = true
-vim.opt.relativenumber = false;
+vim.opt.relativenumber = true;
 vim.opt.mouse='v'
 vim.opt.hlsearch = true
 vim.opt.tabstop=4
@@ -92,6 +92,8 @@ vim.cmd[[
   " provide custom statusline: lightline.vim, vim-airline.
   set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 ]]
+
+vim.g['coc_node_path'] = '/usr/local/bin/node'
 
 -- plugin fzf
 --
