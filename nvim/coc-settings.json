@@ -43,8 +43,9 @@
       "rounded": true,
       "shadow": false
   },
-  "suggest.selection":"first",
-  "suggest.noselect": false,
+  "suggest.selection":"recentlyUsedByPrefix",
+  "suggest.noselect": true,
   "coc.preferences.extensionUpdateCheck": "daily",
-  "Lua.telemetry.enable": true
+  "Lua.telemetry.enable": true,
+  "snippets.ultisnips.pythonPrompt": false
 }

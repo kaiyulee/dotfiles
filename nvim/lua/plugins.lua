@@ -17,11 +17,13 @@ return require('packer').startup(function()
         setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     use 'liuchengxu/vim-which-key'
     use 'elzr/vim-json'
+    use {
+      'lewis6991/gitsigns.nvim',
+    }
     use 'kevinoid/vim-jsonc'
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
     use 'tpope/vim-fugitive'
-    use 'lewis6991/gitsigns.nvim'
     use 'nvim-lua/plenary.nvim'
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'APZelos/blamer.nvim'
@@ -54,7 +56,7 @@ return require('packer').startup(function()
     use 'honza/vim-snippets'
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true  }
     }
     use 'morhetz/gruvbox'
     use 'sainnhe/everforest'
