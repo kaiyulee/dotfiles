@@ -35,6 +35,10 @@ return require('packer').startup(function()
     use { 'junegunn/fzf', { ['do'] = vim.fn['fzf#install'] } }
     use 'junegunn/fzf.vim'
     use 'antoinemadec/coc-fzf'
+    use {
+      'nvim-telescope/telescope.nvim', branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
     use 'junegunn/goyo.vim'
     use 'editorconfig/editorconfig-vim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
