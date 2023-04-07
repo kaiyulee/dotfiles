@@ -214,3 +214,7 @@ vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 vim.keymap.set('n', '<leader>gt', builtin.git_stash, {})
 vim.keymap.set('n', '<leader>fi', builtin.builtin, {})
+
+-- Telescope frecency --
+nmap("<leader>e", ":lua require'telescope'.extensions.frecency.frecency({ workspace = 'CWD' })<CR>", {noremap = true, silent = true})
+

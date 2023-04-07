@@ -45,5 +45,15 @@ require('telescope').setup{
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
+    frecency = {
+        ignore_patterns = {"*.git/*", "*/tmp/*", "*.idea/*", "*.vscode/*"},
+        disable_devicons = true,
+        workspaces = {
+        ["conf"]    = "/home/beke/.config",
+        ["project"] = "/home/beke/Code/nrs-projects",
+      }
+    }
   }
 }
+
+require'telescope'.load_extension('frecency')

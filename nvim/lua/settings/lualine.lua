@@ -5,20 +5,24 @@ local config = {
         icons_enabled = true,
         theme = 'auto',
         component_separators = {
-            left = '',
-            right = ''
+            -- left = '',
+            -- right = ''
+            left = '',
+            right = ''
         },
         section_separators = {
-            left = '',
-            right = ''
+            -- left = '',
+            -- right = ''
+            left = '',
+            right = ''
         },
         disabled_filetypes = {
-            statusline = {},
+            statusline = {'packer', 'NvimTree'},
             winbar = {}
         },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
             statusline = 1000,
             tabline = 1000,
@@ -41,7 +45,7 @@ local config = {
                 }
             }
         },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_x = {'encoding', 'fileformat', {'filetype', colored = true, icon_only = true}},
         lualine_y = {'progress'},
         lualine_z = {'location'}
     },

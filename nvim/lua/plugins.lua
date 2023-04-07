@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'wakatime/vim-wakatime'
@@ -39,6 +39,13 @@ return require('packer').startup(function()
       'nvim-telescope/telescope.nvim', branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
+    use {
+      "nvim-telescope/telescope-frecency.nvim",
+      config = function()
+        require"telescope".load_extension("frecency")
+      end,
+      requires = {"kkharji/sqlite.lua"}
+    }
     use 'junegunn/goyo.vim'
     use 'editorconfig/editorconfig-vim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -55,6 +62,11 @@ return require('packer').startup(function()
         tag = "v2.*",
         requires = 'kyazdani42/nvim-web-devicons'
     }
+
+
+    -- not installed
+    -- use 'nvim-tree/nvim-web-devicons'
+    -- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
