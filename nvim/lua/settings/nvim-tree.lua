@@ -152,6 +152,30 @@ require("nvim-tree").setup({
         highlight_opened_files = "all",
         indent_markers = {
             enable = true
+        },
+        icons = {
+            webdev_colors = true,
+            glyphs = {
+                folder = {
+                  arrow_closed = "",
+                  arrow_open = "",
+                  default = "",
+                  open = "",
+                  empty = "",
+                  empty_open = "",
+                  symlink = "",
+                  symlink_open = "",
+                },
+                git = {
+                  unstaged = "",
+                  staged = "",
+                  unmerged = "",
+                  renamed = "易",
+                  untracked = "",
+                  deleted = "",
+                  ignored = "◌",
+                }
+            }
         }
     },
     filters = {
@@ -161,3 +185,5 @@ require("nvim-tree").setup({
     open_on_setup = true,
     open_on_tab = true
 })
+
+

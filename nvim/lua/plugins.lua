@@ -46,16 +46,17 @@ return require('packer').startup(function(use)
       end,
       requires = {"kkharji/sqlite.lua"}
     }
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'junegunn/goyo.vim'
     use 'editorconfig/editorconfig-vim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'xiyaowong/nvim-transparent'
+    use 'nvim-tree/nvim-web-devicons'
     use {
-        'kyazdani42/nvim-tree.lua',
+        'nvim-tree/nvim-tree.lua',
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icons
-        },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        }
     }
     use {
         'akinsho/bufferline.nvim',
@@ -64,9 +65,6 @@ return require('packer').startup(function(use)
     }
 
 
-    -- not installed
-    -- use 'nvim-tree/nvim-web-devicons'
-    -- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
