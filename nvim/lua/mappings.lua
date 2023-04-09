@@ -206,7 +206,8 @@ nmap('<leader>tr', [[:NvimTreeFindFile<cr>]], {})
 
 -- Telescope --
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
@@ -214,6 +215,8 @@ vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 vim.keymap.set('n', '<leader>gt', builtin.git_stash, {})
 vim.keymap.set('n', '<leader>fi', builtin.builtin, {})
+vim.keymap.set('n', '<leader>c', builtin.commands, {})
+vim.keymap.set('n', '<leader>r', builtin.resume, {})
 
 -- Telescope frecency --
 nmap("<leader>e", ":lua require'telescope'.extensions.frecency.frecency({ workspace = 'CWD' })<CR>", {noremap = true, silent = true})
