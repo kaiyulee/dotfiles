@@ -159,10 +159,14 @@ require("nvim-tree").setup({
                 folder = {
                   arrow_closed = "",
                   arrow_open = "",
-                  default = "",
-                  open = "",
-                  empty = "",
-                  empty_open = "",
+                  -- default = "",
+                  -- open = "",
+                  -- empty = "",
+                  -- empty_open = "",
+                  default = "",
+                  open = "",
+                  empty = "",
+                  empty_open = "",
                   symlink = "",
                   symlink_open = "",
                 },
@@ -182,7 +186,7 @@ require("nvim-tree").setup({
         dotfiles = false
     },
     disable_netrw = true,
-    open_on_tab = true
+    open_on_tab = false
 })
 
 local function open_nvim_tree(data)
@@ -200,5 +204,5 @@ local function open_nvim_tree(data)
   -- open the tree, find the file but don't focus it
   require("nvim-tree.api").tree.toggle({ focus = false, find_file = true, })
 end
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
