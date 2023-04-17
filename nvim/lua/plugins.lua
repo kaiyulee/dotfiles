@@ -94,7 +94,8 @@ return require('packer').startup(function(use)
     -- LSP installer --
     use {
         "williamboman/mason.nvim",
-        run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
     }
 
     -- popups --
