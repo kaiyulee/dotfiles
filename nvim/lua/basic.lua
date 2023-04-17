@@ -67,7 +67,7 @@ vim.opt.signcolumn='yes'
 
 
 -- Highlight the symbol and its references when holding the cursor.
-vim.cmd[[
+--[[ vim.cmd[[
   autocmd CursorHold * silent call CocActionAsync('highlight')
   augroup mygroup
     autocmd!
@@ -93,7 +93,7 @@ vim.cmd[[
   set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 ]]
 
-vim.g['coc_node_path'] = '/usr/local/bin/node'
+-- vim.g['coc_node_path'] = '/usr/local/bin/node' ]]
 
 -- plugin fzf
 --

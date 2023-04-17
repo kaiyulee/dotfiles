@@ -60,128 +60,6 @@ map('x', 'al', '<Plug>(EasyAlign)')
     -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
 map('n', 'al', '<Plug>(EasyAlign)')
 
--- " coc.nvim
---Use tab for trigger completion with characters ahead and navigate. 
---NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
---other plugin before putting this into your config.
-map('i', '<TAB>', 'coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\\<Tab>" : coc#refresh()', {silent = true, expr = true})
-map('i', '<S-TAB>', 'coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"', {silent = true, expr = true})
--- Make <CR> to accept selected completion item or notify coc.nvim to format
--- <C-g>u breaks current undo, please make your own choice.
-map('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"', {silent = true,expr = true})
-
-vim.cmd[[
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-]]
-
-
-function CheckBackspace()
-    local col = vim.fn.col('.') - 1;
-    vim.regex();
-    return false == col or vim.regex("#'\b'").match_str(vim.fn.getline('.')[col - 1]);
-end
-
-
--- " Use <c-space> to trigger completion.
--- inoremap <silent><expr> <c-space> coc#refresh()
-map('i', '<c-space>', 'coc#refresh', {silent = true, expr = true})
-
-
--- " scroll in float window
-if vim.fn.has('nvim-0.4.0') or vim.fn.has('patch-8.2.0750') then
-  map('n', '<C-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "\\<C-f>"', {silent = true, nowait = true, expr = true})
-  map('n', '<C-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C-b>"', {silent = true, nowait = true, expr = true})
-  map('i', '<C-f>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<Right>"', {silent = true, nowait = true, expr = true})
-  map('i', '<C-b>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<Left>"', {silent = true, nowait = true, expr = true})
-  map('v', '<C-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "\\<C-f>"', {silent = true, nowait = true, expr = true})
-  map('v', '<C-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "\\<C-b>"', {silent = true, nowait = true, expr = true})
-end
-
-
--- " Use `[g` and `]g` to navigate diagnostics
--- nmap <silent> [g <Plug>(coc-diagnostic-prev)
--- nmap <silent> ]g <Plug>(coc-diagnostic-next)
-map('n', '[g', '<Plug>(coc-diagnostic-prev)', {silent = true})
-map('n', ']g', '<Plug>(coc-diagnostic-next)', {silent = true})
-
--- " GoTo code navigation.
--- nmap <silent> gd <Plug>(coc-definition)
--- nmap <silent> gy <Plug>(coc-type-definition)
--- nmap <silent> gi <Plug>(coc-implementation)
--- nmap <silent> gr <Plug>(coc-references)
-map('n', 'gd', '<Plug>(coc-definition)', {silent = true})
-map('n', 'gy', '<Plug>(coc-type-definition)', {silent = true})
-map('n', 'gi', '<Plug>(coc-implementation)', {silent = true})
-map('n', 'gr', '<Plug>(coc-references)', {silent = true})
-
--- " Symbol renaming.
--- nmap <leader>rn <Plug>(coc-rename)
--- " Code refactor
--- nmap <leader>rf <Plug>(coc-refactor)
-map('n', '<leader>rn', '<Plug>(coc-rename)')
-map('n', '<leader>rf', '<Plug>(coc-refactor)')
-
-
--- " Formatting selected code.
--- xmap <leader>f  <Plug>(coc-format-selected)
--- nmap <leader>f  <Plug>(coc-format-selected)
-map('x', '<leader>f', '<Plug>(coc-format-selected)')
-map('n', '<leader>f', '<Plug>(coc-format-selected)')
-
--- " Applying codeAction to the selected region.
--- " Example: `<leader>aap` for current paragraph
--- xmap <leader>a  <Plug>(coc-codeaction-selected)
--- nmap <leader>a  <Plug>(coc-codeaction-selected)
-map('x', '<leader>a', '<Plug>(coc-codeaction-selected)')
-map('n', '<leader>a', '<Plug>(coc-codeaction-selected)')
-
--- " Remap keys for applying codeAction to the current line.
--- nmap <leader>ac  <Plug>(coc-codeaction)
--- " Apply AutoFix to problem on the current line.
--- nmap <leader>qf  <Plug>(coc-fix-current)
-map('n', '<leader>ac', '<Plug>(coc-codeaction)')
-map('n', '<leader>qf', '<Plug>(coc-fix-current)')
-
--- " Introduce function text object
--- " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
--- xmap if <Plug>(coc-funcobj-i)
--- xmap af <Plug>(coc-funcobj-a)
--- omap if <Plug>(coc-funcobj-i)
--- omap af <Plug>(coc-funcobj-a)
-xmap('if', '<Plug>(coc-funcobj-i)')
-xmap('af', '<Plug>(coc-funcobj-a)')
-omap('if', '<Plug>(coc-funcobj-i)')
-omap('af', '<Plug>(coc-funcobj-a)')
-
--- " Use <TAB> for selections ranges.
--- " NOTE: Requires 'textDocument/selectionRange' support from the language server.
--- " coc-tsserver, coc-python are the examples of servers that support it.
--- nmap <silent> <TAB> <Plug>(coc-range-select)
--- xmap <silent> <TAB> <Plug>(coc-range-select)
--- map <silent> <TAB> <Plug>(coc-range-select)
--- map <silent> <TAB> <Plug>(coc-range-select)
-nmap('<TAB>', '<Plug>(coc-range-select)', {silent = true})
-xmap('<TAB>', '<Plug>(coc-range-select)', {silent = true})
-map('', '<TAB>', '<Plug>(coc-range-select)', {silent = true})
-
--- " Mappings using CoCList:
-nmap('<C-p>', ':Files<CR>')
-nmap('<space><space>', ':<C-u>CocFzfList<CR>')
-nmap('<space>a', ':<C-u>CocFzfList diagnostics<CR>')
-nmap('<space>c', ':<C-u>CocFzfList commands<CR>')
-nmap('<space>e', ':<C-u>CocFzfList mru<CR>')
--- nmap('<space>e', ':CocCommand fzf-preview.ProjectMruFiles<CR>')
-nmap('<space>l', ':<C-u>CocFzfList location<CR>')
-nmap('<space>s', ':<C-u>CocFzfList symbols<CR>')
-nmap('<space>o', ':<C-u>CocFzfList outline<CR>')
-nmap('<space>p', ':<C-u>CocFzfListResume<CR>')
-nmap('<leader>b', ':<C-u>CocFzfList buffers<CR>')
-nmap('<leader>ag', ':<C-u>Ag<CR>')
-nmap('<leader>gc', ':<C-u>BCommits<CR>')
-nmap('<leader>t', ':<C-u>Tags<CR>')
 
 -- " plugin incsearch 
 vim.g['incsearch#auto_nohlsearch'] = 1
@@ -237,3 +115,41 @@ end, { desc = "Previous todo comment" })
 --   require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
 -- end, { desc = "Next error/warning todo comment" })
 
+-- lspconfig --
+-- lsp global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})

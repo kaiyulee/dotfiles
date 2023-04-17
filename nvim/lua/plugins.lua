@@ -4,7 +4,6 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'wakatime/vim-wakatime'
-    use { 'neoclide/coc.nvim', branch = 'release' }
     use { 'phpactor/phpactor', { ['for'] = 'php', tag = '*', ['do'] = 'composer install --no-dev -o' } }
     --use 'Yggdroot/indentLine'
     use "lukas-reineke/indent-blankline.nvim"
@@ -32,9 +31,10 @@ return require('packer').startup(function(use)
     use 'haya14busa/incsearch.vim'
     use 'easymotion/vim-easymotion'
     use 'jiangmiao/auto-pairs'
-    use { 'junegunn/fzf', { ['do'] = vim.fn['fzf#install'] } }
-    use 'junegunn/fzf.vim'
-    use 'antoinemadec/coc-fzf'
+    -- use { 'junegunn/fzf', { ['do'] = vim.fn['fzf#install'] } }
+    -- use { 'neoclide/coc.nvim', branch = 'release' }
+    -- use 'junegunn/fzf.vim'
+    -- use 'antoinemadec/coc-fzf'
     use {
       'nvim-telescope/telescope.nvim', branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
@@ -67,6 +67,7 @@ return require('packer').startup(function(use)
 
 
     use 'SirVer/ultisnips'
+    use 'quangnguyen30192/cmp-nvim-ultisnips'
     use 'honza/vim-snippets'
     use {
         'nvim-lualine/lualine.nvim',
@@ -97,6 +98,14 @@ return require('packer').startup(function(use)
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
     }
+
+    use 'gbrlsnchs/telescope-lsp-handlers.nvim'
+
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
 
     -- popups --
     use({

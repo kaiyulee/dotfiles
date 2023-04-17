@@ -44,7 +44,7 @@ require('telescope').setup{
       vertical = {
         mirror = false,
       },
-      width = 0.60,
+      width = 0.87,
       height = 0.80,
       preview_cutoff = 120,
     },
@@ -85,3 +85,5 @@ require('telescope').setup{
 require('telescope').load_extension('frecency')
 
 require('telescope').load_extension('fzf')
+
+require('telescope').load_extension('lsp_handlers')
