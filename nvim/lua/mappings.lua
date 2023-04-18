@@ -61,25 +61,12 @@ map('x', 'al', '<Plug>(EasyAlign)')
 map('n', 'al', '<Plug>(EasyAlign)')
 
 
--- " plugin incsearch 
-vim.g['incsearch#auto_nohlsearch'] = 1
-map('', '/', '<Plug>(incsearch-forward)')
-map('', '?', '<Plug>(incsearch-backward)')
-map('', 'g/', '<Plug>(incsearch-stay)')
-map('', 'n', '<Plug>(incsearch-nohl-n)')
-map('', 'N', '<Plug>(incsearch-nohl-N)')
-map('', '*', '<Plug>(incsearch-nohl-*)')
-map('', '#', 'Plug>(incsearch-nohl-#)')
-map('', 'g*', '<Plug>(incsearch-nohl-g*)')
-map('', 'g#', '<Plug>(incsearch-nohl-g#)')
-
-vmap('<leader>fmt', '<Plug>(coc-format-selected)')
-nmap('<leader>fmt', '<Plug>(coc-format-selected)')
-
 -- nvim-tree
 nmap('<leader>tg', [[:NvimTreeToggle<cr>]], {})
 nmap('<leader>tf', [[:NvimTreeFocus<cr>]], {})
 nmap('<leader>tr', [[:NvimTreeFindFile<cr>]], {})
+
+nmap('<space>o', [[:SymbolsOutline<cr>]])
 
 
 -- Telescope --
@@ -146,10 +133,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', [[:CodeActionMenu<cr>]], opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
+    vim.keymap.set('n', '<leader>o', vim.lsp.buf.document_symbol, opts)
+    vim.keymap.set('n', '<leader>O', vim.lsp.buf.workspace_symbol, opts)
   end,
 })

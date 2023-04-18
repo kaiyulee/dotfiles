@@ -28,7 +28,6 @@ return require('packer').startup(function(use)
     use 'APZelos/blamer.nvim'
     use 'terryma/vim-multiple-cursors'
     use 'junegunn/vim-easy-align'
-    use 'haya14busa/incsearch.vim'
     use 'easymotion/vim-easymotion'
     use 'jiangmiao/auto-pairs'
     -- use { 'junegunn/fzf', { ['do'] = vim.fn['fzf#install'] } }
@@ -106,6 +105,12 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
+
+    -- symbols outline --
+    use 'simrat39/symbols-outline.nvim'
+
+    use 'weilbith/nvim-code-action-menu'
+
 
     -- popups --
     use({

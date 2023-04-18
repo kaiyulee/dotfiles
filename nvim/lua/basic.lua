@@ -142,15 +142,4 @@ vim.cmd[[
 au FileType gitcommit let b:EditorConfig_disable = 1
 ]]
 
--- nginx ls
-vim.cmd[[
-
-augroup custom_nginx
-  autocmd!
-  autocmd FileType nginx setlocal iskeyword+=$
-  autocmd FileType nginx let b:coc_additional_keywords = ['$']
-augroup end
-
-]]
-
 
