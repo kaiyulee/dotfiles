@@ -2,32 +2,32 @@
 
 -- map helper
 local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = { noremap = true }
     if opts then options = vim.tbl_extend('force', options, opts) end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 local function xmap(lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = { noremap = true }
     if opts then options = vim.tbl_extend('force', options, opts) end
     vim.api.nvim_set_keymap('x', lhs, rhs, options)
 end
 local function nmap(lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = { noremap = true }
     if opts then options = vim.tbl_extend('force', options, opts) end
     vim.api.nvim_set_keymap('n', lhs, rhs, options)
 end
 local function vmap(lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = { noremap = true }
     if opts then options = vim.tbl_extend('force', options, opts) end
     vim.api.nvim_set_keymap('v', lhs, rhs, options)
 end
 local function imap(lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = { noremap = true }
     if opts then options = vim.tbl_extend('force', options, opts) end
     vim.api.nvim_set_keymap('i', lhs, rhs, options)
 end
 local function omap(lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = { noremap = true }
     if opts then options = vim.tbl_extend('force', options, opts) end
     vim.api.nvim_set_keymap('o', lhs, rhs, options)
 end
@@ -48,16 +48,16 @@ map('n', '<leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>')
 map('n', '<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>')
 map('n', '<leader>-', '<Cmd>BufferLineCycleNext<CR>')
 map('n', '<leader>+', '<Cmd>BufferLineCyclePrev<CR>')
-nmap('<F1>', ':BufferLineCyclePrev<CR>', {silent = true}) -- buffer prev
-nmap('<F2>', ':BufferLineCycleNext<CR>', {silent = true}) -- buffer next
-nmap('<leader>d', ':bd<cr>', {silent = true}) -- delete buffer
+nmap('<F1>', ':BufferLineCyclePrev<CR>', { silent = true }) -- buffer prev
+nmap('<F2>', ':BufferLineCycleNext<CR>', { silent = true }) -- buffer next
+nmap('<leader>d', ':bd<cr>', { silent = true })           -- delete buffer
 -- nmap('<c-[>', ':BufferLineCyclePrev<CR>', {silent = true}) -- buffer prev
 -- nmap('<c-]>', ':BufferLineCycleNext<CR>', {silent = true}) -- buffer next
 
 -- vim-easy-align
-    -- Start interactive EasyAlign in visual mode (e.g. vipga)
+-- Start interactive EasyAlign in visual mode (e.g. vipga)
 map('x', 'al', '<Plug>(EasyAlign)')
-    -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
+-- Start interactive EasyAlign for a motion/text object (e.g. gaip)
 map('n', 'al', '<Plug>(EasyAlign)')
 
 
@@ -84,16 +84,17 @@ vim.keymap.set('n', '<leader>c', builtin.commands, {})
 vim.keymap.set('n', '<leader>r', builtin.resume, {})
 
 -- Telescope frecency --
-nmap("<leader>e", ":lua require'telescope'.extensions.frecency.frecency({ workspace = 'CWD' })<CR>", {noremap = true, silent = true})
+nmap("<leader>e", ":lua require'telescope'.extensions.frecency.frecency({ workspace = 'CWD' })<CR>",
+{ noremap = true, silent = true })
 
 
 -- todo-comments --
 vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next()
+    require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })
 
 vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev()
+    require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
 -- You can also specify a list of valid jump keywords
@@ -113,33 +114,49 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', [[:CodeActionMenu<cr>]], opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
-    vim.keymap.set('n', '<leader>o', vim.lsp.buf.document_symbol, opts)
-    vim.keymap.set('n', '<leader>O', vim.lsp.buf.workspace_symbol, opts)
-  end,
+        -- Buffer local mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+        vim.keymap.set('n', '<space>wl', function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, opts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+        -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set({ 'n', 'v' }, '<space>ca', [[:CodeActionMenu<cr>]], opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', '<space>f', function()
+            vim.lsp.buf.format { async = true }
+        end, opts)
+        vim.keymap.set('n', '<leader>o', vim.lsp.buf.document_symbol, opts)
+        vim.keymap.set('n', '<leader>O', vim.lsp.buf.workspace_symbol, opts)
+    end,
 })
+
+local function lsp_highlight_document(client)
+    -- Set autocommands conditional on server_capabilities
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(
+            [[
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]],
+            false
+        )
+    end
+end

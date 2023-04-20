@@ -12,21 +12,23 @@ require('neoscroll').setup({
     post_hook = nil -- Function to run after the scrolling animation ends
 })
 
--- auto_dark_mode
 vim.g.gruvbox_termcolors = 256
+vim.g.gruvbox_sign_column = 'bg0' -- will set your signcolumn the same color as your background
+vim.g.gruvbox_contrast_dark = 'soft'
+vim.g.gruvbox_contrast_light = 'soft'
+vim.g.gruvbox_invert_signs = 1
+-- auto_dark_mode
 local auto_dark_mode = require('auto-dark-mode')
 auto_dark_mode.setup({
     update_interval = 3000,
     set_dark_mode = function()
         vim.api.nvim_set_option('background', 'dark')
         vim.cmd('colorscheme gruvbox')
-        vim.cmd[[highlight CocMenuSel cterm=bold gui=bold ctermbg=NONE guibg=#282828]]
         require('settings.lualine').set_theme('gruvbox_dark');
     end,
     set_light_mode = function()
         vim.api.nvim_set_option('background', 'light')
         vim.cmd('colorscheme gruvbox')
-        vim.cmd[[highlight CocMenuSel cterm=bold gui=bold ctermbg=NONE guibg=#FCF3D0]]
         require('settings.lualine').set_theme('gruvbox_light')
     end
 })

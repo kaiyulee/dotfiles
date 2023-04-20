@@ -3,6 +3,36 @@ require("mason-lspconfig").setup({
     ensure_installed = { "lua_ls" },
 })
 
+-- Highlight symbol under cursor
+local function lsp_highlight(client, bufnr)
+  if client.supports_method "textDocument/documentHighlight" then
+    vim.api.nvim_create_augroup("lsp_document_highlight", {
+      clear = false,
+    })
+    vim.api.nvim_clear_autocmds {
+      buffer = bufnr,
+      group = "lsp_document_highlight",
+    }
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      group = "lsp_document_highlight",
+      buffer = bufnr,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+      group = "lsp_document_highlight",
+      buffer = bufnr,
+      callback = vim.lsp.buf.clear_references,
+    })
+  else print("hahadfa")
+  end
+end
+require("mason-lspconfig").setup_handlers {
+    function (server_name)
+        require("lspconfig")[server_name].setup {
+        }
+    end
+}
+
 -- After setting up mason-lspconfig you may set up servers via lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require("lspconfig").lua_ls.setup {
@@ -12,7 +42,10 @@ require("lspconfig").rust_analyzer.setup {
     capabilities = capabilities
 }
 require("lspconfig").intelephense.setup {
-    capabilities = capabilities
+    capabilities = capabilities,
+    on_attach = function (client, bufnr)
+        lsp_highlight(client, bufnr)
+    end
 }
 require("lspconfig").jdtls.setup {
     capabilities = capabilities
@@ -20,6 +53,7 @@ require("lspconfig").jdtls.setup {
 require("lspconfig").jsonls.setup {
     capabilities = capabilities
 }
+
 
 -- Set up nvim-cmp.
 local cmp = require'cmp'
