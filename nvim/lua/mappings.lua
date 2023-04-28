@@ -66,29 +66,36 @@ nmap('<leader>tg', [[:NvimTreeToggle<cr>]], {})
 nmap('<leader>tf', [[:NvimTreeFocus<cr>]], {})
 nmap('<leader>tr', [[:NvimTreeFindFile<cr>]], {})
 
-nmap('<space>o', [[:SymbolsOutline<cr>]])
+nmap('<leader>o', [[:SymbolsOutline<cr>]])
+vim.keymap.set({ 'n', 'v' }, '<space>ca', [[:CodeActionMenu<cr>]], {})
 
 
--- Telescope --
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
-vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
-vim.keymap.set('n', '<leader>gt', builtin.git_stash, {})
-vim.keymap.set('n', '<leader>fi', builtin.builtin, {})
-vim.keymap.set('n', '<leader>c', builtin.commands, {})
-vim.keymap.set('n', '<leader>r', builtin.resume, {})
+-- FZF --
+local fzf = require('fzf-lua')
+vim.keymap.set("n", "<c-P>",fzf.files, { silent = true })
+vim.keymap.set('n', '<leader>fg', fzf.live_grep, {})
+vim.keymap.set('n', '<leader>fb', fzf.buffers, {})
+vim.keymap.set('n', '<leader>fh', fzf.help_tags, {})
+vim.keymap.set('n', '<leader>sw', fzf.grep_cword, {})
+vim.keymap.set('n', '<leader>gb', fzf.git_branches, {})
+vim.keymap.set('n', '<leader>gs', fzf.git_status, {})
+vim.keymap.set('n', '<leader>gt', fzf.git_stash, {})
+-- lsp
+vim.keymap.set('n', '<leader>ca', fzf.lsp_code_actions, {})
+vim.keymap.set('n', '<leader>ic', fzf.lsp_incoming_calls, {})
+vim.keymap.set('n', '<leader>oc', fzf.lsp_outgoing_calls, {})
+vim.keymap.set('n', '<leader>ff', fzf.lsp_finder, {})
+vim.keymap.set('n', 'gr', fzf.lsp_references, {})
+vim.keymap.set('n', 'gD', fzf.lsp_declarations, {})
+vim.keymap.set('n', 'gd', fzf.lsp_definitions, {})
+vim.keymap.set('n', 'gi', fzf.lsp_implementations, {})
+vim.keymap.set('n', '<space>D', fzf.lsp_typedefs, {})
+vim.keymap.set('n', '<space>o', fzf.lsp_document_symbols, {})
+vim.keymap.set('n', '<leader>O', fzf.lsp_workspace_symbols, {})
+vim.keymap.set('n', '<leader>qf', fzf.quickfix_stack, {})
 
--- Telescope frecency --
-nmap("<leader>e", ":lua require'telescope'.extensions.frecency.frecency({ workspace = 'CWD' })<CR>",
-{ noremap = true, silent = true })
 
-
--- todo-comments --
+-- TODO-COMMENTS --
 vim.keymap.set("n", "]t", function()
     require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })
@@ -97,11 +104,6 @@ vim.keymap.set("n", "[t", function()
     require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
--- You can also specify a list of valid jump keywords
-
--- vim.keymap.set("n", "]t", function()
---   require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
--- end, { desc = "Next error/warning todo comment" })
 
 -- lspconfig --
 -- lsp global mappings.
@@ -122,26 +124,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
         vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
         vim.keymap.set('n', '<space>wl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
-        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
         -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set({ 'n', 'v' }, '<space>ca', [[:CodeActionMenu<cr>]], opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         vim.keymap.set('n', '<space>f', function()
             vim.lsp.buf.format { async = true }
         end, opts)
-        vim.keymap.set('n', '<leader>o', vim.lsp.buf.document_symbol, opts)
-        vim.keymap.set('n', '<leader>O', vim.lsp.buf.workspace_symbol, opts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     end,
+
 })
 

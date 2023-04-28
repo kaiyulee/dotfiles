@@ -3,6 +3,9 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use 'nvim-tree/nvim-web-devicons'
+    use { 'junegunn/fzf', run = './install --bin', }
+    use { 'ibhagwan/fzf-lua'}
     use 'wakatime/vim-wakatime'
     use { 'phpactor/phpactor', { ['for'] = 'php', tag = '*', ['do'] = 'composer install --no-dev -o' } }
     --use 'Yggdroot/indentLine'
@@ -30,10 +33,6 @@ return require('packer').startup(function(use)
     use 'junegunn/vim-easy-align'
     use 'easymotion/vim-easymotion'
     use 'jiangmiao/auto-pairs'
-    -- use { 'junegunn/fzf', { ['do'] = vim.fn['fzf#install'] } }
-    -- use { 'neoclide/coc.nvim', branch = 'release' }
-    -- use 'junegunn/fzf.vim'
-    -- use 'antoinemadec/coc-fzf'
     use {
       'nvim-telescope/telescope.nvim', branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
@@ -50,7 +49,6 @@ return require('packer').startup(function(use)
     use 'editorconfig/editorconfig-vim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'xiyaowong/nvim-transparent'
-    use 'nvim-tree/nvim-web-devicons'
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
