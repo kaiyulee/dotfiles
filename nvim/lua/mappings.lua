@@ -32,6 +32,13 @@ local function omap(lhs, rhs, opts)
     vim.api.nvim_set_keymap('o', lhs, rhs, options)
 end
 
+
+nmap('<esc>', ':noh<cr><esc>');
+
+-- open file under cursor
+nmap('<F8>', ':vertical wincmd f<CR>');
+imap('<F8>', ':vertical wincmd f<CR>');
+
 -- vim-which-key
 map('n', '<Leader> ', ':WhichKey <Space>');
 

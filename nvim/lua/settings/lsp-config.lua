@@ -3,61 +3,52 @@ require("mason-lspconfig").setup({
     ensure_installed = { "lua_ls" },
 })
 
--- Highlight symbol under cursor
-local function lsp_highlight(client, bufnr)
-    if client.supports_method "textDocument/documentHighlight" then
-        vim.api.nvim_create_augroup("lsp_document_highlight", {
-            clear = false,
-        })
-        vim.api.nvim_clear_autocmds {
-            buffer = bufnr,
-            group = "lsp_document_highlight",
-        }
-        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-            group = "lsp_document_highlight",
-            buffer = bufnr,
-            callback = vim.lsp.buf.document_highlight,
-        })
-        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-            group = "lsp_document_highlight",
-            buffer = bufnr,
-            callback = vim.lsp.buf.clear_references,
-        })
-    else
-        print("hahadfa")
-    end
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local on_attach = function(client, bufnr)
+  -- Highlighting references.
+  -- See: https://sbulav.github.io/til/til-neovim-highlight-references/
+  -- for the highlight trigger time see: `vim.opt.updatetime`
+  if client.server_capabilities.documentHighlightProvider then
+      vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+      vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
+      vim.api.nvim_create_autocmd("CursorHold", {
+          callback = vim.lsp.buf.document_highlight,
+          buffer = bufnr,
+          group = "lsp_document_highlight",
+          desc = "Document Highlight",
+      })
+      vim.api.nvim_create_autocmd("CursorMoved", {
+          callback = vim.lsp.buf.clear_references,
+          buffer = bufnr,
+          group = "lsp_document_highlight",
+          desc = "Clear All the References",
+      })
+  end
 end
+
 require("mason-lspconfig").setup_handlers {
     function(server_name)
         require("lspconfig")[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
         }
     end
 }
 
 -- After setting up mason-lspconfig you may set up servers via lspconfig
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require("lspconfig").lua_ls.setup {
-    capabilities = capabilities
-}
-require("lspconfig").rust_analyzer.setup {
-    capabilities = capabilities
-}
 require("lspconfig").intelephense.setup {
-    capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        lsp_highlight(client, bufnr)
-    end
-}
-require("lspconfig").jdtls.setup {
-    capabilities = capabilities
-}
-require("lspconfig").jsonls.setup {
-    capabilities = capabilities
+    settings = {
+        intelephense = {
+            maxMemory = 512,
+            maxFileSize = 25000,
+        },
+    },
 }
 
 
 -- Set up nvim-cmp.
-local cmp = require 'cmp'
+local cmp = require('cmp')
 local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 cmp.setup({
