@@ -33,7 +33,7 @@ local function omap(lhs, rhs, opts)
 end
 
 
-nmap('<esc>', ':noh<cr><esc>');
+nmap('<esc>', ':noh<cr>', {silent = true});
 
 -- open file under cursor
 nmap('<F8>', ':vertical wincmd f<CR>');
