@@ -11,6 +11,11 @@ vim.opt.softtabstop=4
 vim.opt.expandtab = true
 vim.opt.textwidth=160
 vim.opt.shiftwidth=4
+-- vim.o.clipboard sets the type of clipboard to be used for yanking and pasting. 
+-- The value "unnamedplus" means that the system clipboard will be used. 
+-- When you yank or copy something in Neovim, it will be automatically saved to the system clipboard and can be pasted in other programs as well. 
+-- Similarly, if you copy something from outside of Neovim, it can be pasted into Neovim using the system clipboard.
+vim.o.clipboard = "unnamedplus"
 -- context lines 始终距离顶部或者底部3行的距离
 vim.opt.so=3
 vim.opt.smartcase = true
