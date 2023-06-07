@@ -70,6 +70,7 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true  }
     }
+    use { "catppuccin/nvim", as = "catppuccin" }
     use 'morhetz/gruvbox'
     use 'sainnhe/everforest'
     use 'john2x/flatui.vim'

@@ -148,3 +148,9 @@ au FileType gitcommit let b:EditorConfig_disable = 1
 ]]
 
 
+if vim.g.vscode then
+    -- VSCode extension
+else
+    -- ordinary Neovim
+end
+
